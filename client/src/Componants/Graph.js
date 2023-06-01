@@ -139,7 +139,16 @@ const Graph = (data) => {
 
                 dataValueText.text(`Value: ${dataValue}°C`);
             }
+
         }
+
+        svg.append('g')
+  .call(xAxis)
+  .attr('transform', `translate(0, ${svgh})`)
+  .attr('class', 'Xaxis');
+svg.append('g')
+  .call(yAxis)
+  .attr('class', 'Yaxis');
 
     }, [])
 
