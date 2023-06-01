@@ -1,7 +1,9 @@
 {
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
-    "@fortawesome/free-solid-svg-icons": "^6.2.1",
-    "@fortawesome/react-fontawesome": "^0.2.0"
+  
+
+  "scripts": {
+    "init-Server": "cd api && npm install && node ./bin/www",
+    "init-Front": "cd ../ && cd client && npm install && npm run start",
+    "start": "npom run init-Server && init-Front"
   }
 }
