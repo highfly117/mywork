@@ -1,7 +1,0 @@
-{
-  "scripts": {
-  "init-Server": "cd api && npm install && npm run dev",
-  "init-Front": "cd client && npm install && npm run start",
-  "start": "start npm run init-Server && start npm run init-Front"
-}
-}
