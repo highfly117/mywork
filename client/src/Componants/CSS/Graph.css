@@ -19,3 +19,8 @@
     stroke: #909093 
 
   }
+
+  .Graph{
+    margin:10px 10px 0px 10px;
+    background-color: rgb(25,25,25);
+  }

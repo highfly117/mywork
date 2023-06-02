@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import DataTable from 'datatables.net-dt'
 import "datatables.net-dt/css/jquery.dataTables.min.css";
+
 import $ from 'jquery'
 
 
@@ -9,13 +10,19 @@ const WeatherTable = (data) => {
 
     useEffect(() => {
 
-        console.log(data)
+        // console.log(data)
 
         const table = $(`#table1`).DataTable(
             {
               data: data.data.forecast.forecastday[0].hour,
               columns: [
-                { data: "time" },
+                {
+                  data: "time",
+                  render: function (data) {
+                    var time = data.split(" ")[1];
+                    return time;
+                  }
+                },
                 { data: "temp_c" },
                 { data: "feelslike_c" },
                 { data: "temp_f." },

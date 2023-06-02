@@ -44,7 +44,7 @@
 .jsonPanel {
     border-top: solid 1px #bfbfbf;
     height: 100%;
-    background: rgb(19, 18, 36);
+    background: rgb(30,30,30);
     padding: 0px;
 
 }
@@ -56,6 +56,8 @@
 
 
 }
+
+
 
 .tg {
     border-collapse: collapse;
