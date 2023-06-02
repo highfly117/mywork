@@ -26,7 +26,7 @@ function App() {
 
       const loadData = async () => { 
         try{
-          const response = await axios.post("http://localhost:9000/getWeather")
+          const response = await axios.post("http://localhost:5000/api/v1/getWeather")
           setdata(response.data)
           
           } catch(error) {
