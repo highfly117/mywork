@@ -30,6 +30,7 @@ let URL = getTimelineURL + "/" + apiType + ".json?" + "key=" + apikey + "&q=" + 
     .then((json) => {
         
        console.log(json)
+       
         return res.send(json)
     })
     .catch((error) => console.error("error: " + error))
