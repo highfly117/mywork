@@ -14,7 +14,9 @@ var WeatherAPI = require('./routes/getWeather');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
+
+app.set('views', "/views");
 app.set('view engine', 'jade');
 
 app.use(cors());
