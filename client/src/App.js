@@ -26,7 +26,7 @@ function App() {
 
       const loadData = async () => { 
         try{
-          const response = await axios.get("http://localhost:5000/api/v1/getWeather")
+          const response = await axios.get("https://express-api-highfly117.vercel.app/api/v1/getWeather")
           setdata(response.data)
           
           } catch(error) {
