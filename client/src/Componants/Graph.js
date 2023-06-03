@@ -49,10 +49,13 @@ const Graph = (data) => {
         let svgw = 1475;
         let svgh = 0;
 
-        if (vh <= 929) {svgh = 490} 
+        if (vh <= 929) {svgh = 665} 
         else if (vh <= 1289) {svgh = 1000}
         else if (vh <= 1449) {svgh = 1175}
-        if (vw <= 3440) {svgw = 2050} 
+        if (vw <= 1920) {svgw = 1475} 
+        else if (vw <= 2560) {svgw = 1475}
+        else if (vw <= 3440) {svgw = 2050}
+     
         
 
         console.log(is_1080p)
