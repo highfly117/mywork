@@ -26,6 +26,7 @@ function App() {
 
       const loadData = async () => { 
         try{
+          //const response = await axios.get("http://localhost:5000/api/v1/getWeather")
           const response = await axios.get("https://express-api-highfly117.vercel.app/api/v1/getWeather")
           setdata(response.data)
           
@@ -52,12 +53,22 @@ function App() {
         <div className="col-8 jsonPanel" >
           <div className="row" style={{marginLeft: "0px", marginRight: "0px"}} > 
           {data ? (
+            <DataBar data={{DataType:"Max", DataValue:data.forecast.forecastday[0].day.maxtemp_c  + " °C"}} className="col-sm"></DataBar>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {data ? (
+            <DataBar data={{DataType:"Min", DataValue:data.forecast.forecastday[0].day.mintemp_c + " °C"}} className="col-sm"></DataBar>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {data ? (
             <DataBar data={{DataType:"Humidity", DataValue:data.current.humidity}} className="col-sm"></DataBar>
           ) : (
             <p>Loading...</p>
           )}
           {data ? (
-            <DataBar data={{DataType:"Wind Speed (MPH)", DataValue:data.current.wind_mph}} className="col-sm"></DataBar>
+            <DataBar data={{DataType:"Wind Speed", DataValue:data.current.wind_mph + " MPH"}} className="col-sm"></DataBar>
           ) : (
             <p>Loading...</p>
           )}
@@ -67,15 +78,22 @@ function App() {
             <p>Loading...</p>
           )}
           {data ? (
-            <DataBar data={{DataType:"Gusts (MPH)", DataValue:data.current.gust_mph}} className="col-sm"></DataBar>
+            <DataBar data={{DataType:"Gusts", DataValue:data.current.gust_mph + " MPH"}} className="col-sm"></DataBar>
           ) : (
             <p>Loading...</p>
           )}
           {data ? (
-            <DataBar data={{DataType:"Pressure (mbar)", DataValue:data.current.pressure_mb}} className="col-sm"></DataBar>
+            <DataBar data={{DataType:"Pressure", DataValue:data.current.pressure_mb + " mb"}} className="col-sm"></DataBar>
           ) : (
             <p>Loading...</p>
           )}
+          {data ? (
+            <DataBar data={{DataType:"Rain", DataValue:data.forecast.forecastday[0].day.totalprecip_mm + " mm"}} className="col-sm"></DataBar>
+          ) : (
+            <p>Loading...</p>
+          )}
+          
+          
           </div>
         
         {data ? (

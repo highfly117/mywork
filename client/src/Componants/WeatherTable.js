@@ -12,6 +12,15 @@ const WeatherTable = (data) => {
 
         // console.log(data)
 
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+      let tableheight = ""
+
+        if (vh <= 929) {tableheight = "810px"} 
+        else if (vh <= 1289) {tableheight = "1131px"}
+        else if (vh <= 1449) {tableheight = "1284px"}
+
         const table = $(`#table1`).DataTable(
             {
               data: data.data.forecast.forecastday[0].hour,
@@ -36,7 +45,7 @@ const WeatherTable = (data) => {
                   }
                 }
               ],
-              scrollY: "1284px",
+              scrollY: tableheight,
               paging: false,
               destroy: true,  // I think some clean up is happening here
               searching: false,

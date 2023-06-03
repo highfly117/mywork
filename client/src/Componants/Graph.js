@@ -1,13 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import './CSS/Graph.css'
 import * as d3 from "d3";
+import { useMediaQuery } from 'react-responsive'
 
 
 const Graph = (data) => {
 
     const svgRef = useRef();
 
+    const is_1080p = useMediaQuery({ query: '(min-width: 1000px)' })
+
+
     useEffect(() => {
+
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+
+        
+
 
 
         let timeplot = []
@@ -36,8 +46,18 @@ const Graph = (data) => {
         // console.log(Math.round(Math.max.apply(Math, tempplot)))
 
 
-        const svgw = 1475;
-        const svgh = 1000;
+        let svgw = 1475;
+        let svgh = 0;
+
+        if (vh <= 929) {svgh = 490} 
+        else if (vh <= 1289) {svgh = 1000}
+        else if (vh <= 1449) {svgh = 1175}
+        if (vw <= 3440) {svgw = 2050} 
+        
+
+        console.log(is_1080p)
+
+
         const svg = d3.select(svgRef.current)
             .attr('width', svgw)
             .attr('height', svgh)
@@ -109,7 +129,7 @@ const Graph = (data) => {
             .attr('y2', svgh)
             .style('stroke', 'white')
             .style('stroke-width', '2')
-            
+
 
         const dataValueText = verticalLineGroup.append('text')
             .attr('class', 'data-value')
@@ -127,29 +147,29 @@ const Graph = (data) => {
             .on('mouseout', () => verticalLineGroup.style('display', 'none'))
             .on('mousemove', mousemove);
 
-            function mousemove(event) {
-                const mouseX = d3.pointer(event)[0];
-                const xValue = xScale.invert(mouseX);
-                const index = Math.round(xValue); // Round to the nearest index
-              
-                if (index >= 0 && index < tempplot.length) {
-                  const xPos = xScale(index);
-                  const yPos = yScale(tempplot[index]);
-              
-                  verticalLineGroup.attr('transform', `translate(${xPos}, 0)`);
-              
-                  verticalLineGroup.select('.vertical-line')
+        function mousemove(event) {
+            const mouseX = d3.pointer(event)[0];
+            const xValue = xScale.invert(mouseX);
+            const index = Math.round(xValue); // Round to the nearest index
+
+            if (index >= 0 && index < tempplot.length) {
+                const xPos = xScale(index);
+                const yPos = yScale(tempplot[index]);
+
+                verticalLineGroup.attr('transform', `translate(${xPos}, 0)`);
+
+                verticalLineGroup.select('.vertical-line')
                     .attr('y1', 0) // Set the starting point of the line to the top of the graph
                     .attr('y2', yPos); // Set the ending point of the line
-              
-                  dataValueText.attr('x', 10)
+
+                dataValueText.attr('x', 10)
                     .attr('y', yPos - 5) // Position the text just above the temperature plot line
                     .style('fill', 'white') // Set the text color to white
-              
-                  const dataValue = tempplot[index];
-                  dataValueText.text(`Value: ${dataValue}°C`);
-                }
-              }
+
+                const dataValue = tempplot[index];
+                dataValueText.text(`Value: ${dataValue}°C`);
+            }
+        }
 
         svg.append('g')
             .call(xAxis)
@@ -158,6 +178,18 @@ const Graph = (data) => {
         svg.append('g')
             .call(yAxis)
             .attr('class', 'Yaxis');
+
+
+        const handleResize = () => {
+            // Reload the component
+            window.location.reload();
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
 
     }, [])
 
