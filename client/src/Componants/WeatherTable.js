@@ -19,6 +19,7 @@ const WeatherTable = (data) => {
 
         if (vh <= 929) {tableheight = "810px"} 
         else if (vh <= 1289) {tableheight = "1131px"}
+        else if (vh <= 1289) {tableheight = "1131px"}
         else if (vh <= 1449) {tableheight = "1284px"}
 
         const table = $(`#table1`).DataTable(

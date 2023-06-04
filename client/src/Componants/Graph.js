@@ -8,7 +8,6 @@ const Graph = (data) => {
 
     const svgRef = useRef();
 
-    const is_1080p = useMediaQuery({ query: '(min-width: 1000px)' })
 
 
     useEffect(() => {
@@ -16,8 +15,8 @@ const Graph = (data) => {
         const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
         const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-        
 
+        console.log(vw, vh)
 
 
         let timeplot = []
@@ -49,16 +48,14 @@ const Graph = (data) => {
         let svgw = 1475;
         let svgh = 0;
 
-        if (vh <= 929) {svgh = 665} 
-        else if (vh <= 1289) {svgh = 1000}
-        else if (vh <= 1449) {svgh = 1175}
-        if (vw <= 1920) {svgw = 1475} 
-        else if (vw <= 2560) {svgw = 1475}
-        else if (vw <= 3440) {svgw = 2050}
-     
-        
-
-        console.log(is_1080p)
+        if (vh < 1080) { svgh = 665 }
+        else if (vh <= 1080) { svgh = 820 }
+        else if (vh < 1440) { svgh = 1025 }
+        else if (vh <= 1440) { svgh = 1170 }
+        else if (vh <= 1600) { svgh = 1175 }
+        if (vw <= 1920) { svgw = 1475 }
+        else if (vw <= 2560) { svgw = 1475 }
+        else if (vw <= 3440) { svgw = 2050 }
 
 
         const svg = d3.select(svgRef.current)
@@ -73,8 +70,24 @@ const Graph = (data) => {
             .domain([0, tempplot.length - 1])
             .range([0, svgw])
         const yScale = d3.scaleLinear()
-            .domain([0, 55])
+            .domain([-35, 55])
             .range([svgh, 0])
+
+        const yAxisGrid = d3.axisLeft(yScale)
+            .ticks(12)
+            .tickSize(-svgw)
+            .tickFormat('')
+
+        svg.append("g")
+            .attr("class", "grid")
+            .call(yAxisGrid)
+            .selectAll(".tick line")
+            .attr("stroke", "lightgray")
+            .attr("stroke-width", 1) // Set the stroke width of the gridlines
+            .attr("stroke-opacity", 0.1)
+            .filter((_, i) => i % 2 !== 0) // Select every other tick line
+            .remove(); // Remove the selected tick lines
+
 
         const generatedScaledLine = d3.line()
             .x((d, i) => xScale(i))
