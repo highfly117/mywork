@@ -30,7 +30,7 @@ function App() {
       try {
         console.log(latitude, longitude);
         //const response = await axios.get("http://localhost:5000/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
-        const response = await axios.get("https://https://express-api-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
         setdata(response.data);
       } catch (error) {
         console.log(error);
