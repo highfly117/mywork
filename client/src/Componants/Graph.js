@@ -70,7 +70,7 @@ const Graph = (data) => {
             .domain([0, tempplot.length - 1])
             .range([0, svgw])
         const yScale = d3.scaleLinear()
-            .domain([-35, 55])
+            .domain([0, 55])
             .range([svgh, 0])
 
         const yAxisGrid = d3.axisLeft(yScale)

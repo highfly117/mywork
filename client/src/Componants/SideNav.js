@@ -32,11 +32,11 @@ const SideNav = (props) => {
                         <input type={"text"} placeholder={"search...."}></input>
                     </a>
                 </li>
-                <Uploadbutton  ></Uploadbutton>
+                {/* <Uploadbutton  ></Uploadbutton> */}
                 <li>
                     <a href="#">
                         <HiVariable className="react-icons" />
-                        <span className="links_name">Variables</span>
+                        <span className="links_name">Weather</span>
                     </a>
                     <span className="tooltips">Variables</span>
                 </li>
@@ -57,7 +57,7 @@ const SideNav = (props) => {
                 <li>
                     <a href="#">
                         <VscJson className="react-icons" />
-                        <span className="links_name">JSON</span>
+                        <span className="links_name">Show Code</span>
                     </a>
                     <span className="tooltips">JSON</span>
                 </li>
