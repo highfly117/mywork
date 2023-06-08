@@ -19,7 +19,7 @@
 
 .Panels {
     position: absolute;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 81px);
     width: calc(100% - 78px);
     top: 75px;
     left: 90px;
@@ -36,7 +36,7 @@
 
 .infopanel {
     border-top: solid 1px #bfbfbf;
-    height: calc(100vh - 56px);
+    height: calc(100vh - 81px);
     background: white;
 
 }
