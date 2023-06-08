@@ -56,17 +56,17 @@ const SideNav = (props) => {
                 <BiMenu onClick={collapse} className="react-icons" id="btn"></BiMenu>
             </div>
             <ul className="nav_list">
-                <li>
+                {/* <li>
                     <a className="nohover" href="#">
                         <FaSearch onClick={collapse} id="faSearch" className="react-icons" />
                         <input type={"text"} placeholder={"search...."}></input>
                     </a>
-                </li>
+                </li> */}
                 {/* <Uploadbutton  ></Uploadbutton> */}
                 <li>
                     <a href="#">
                         <HiVariable className="react-icons" />
-                        <span className="links_name">Weather</span>
+                        <span className="links_name">Weather and API demo</span>
                     </a>
                     <span className="tooltips">Variables</span>
                 </li>
