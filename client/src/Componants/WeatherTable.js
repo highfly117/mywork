@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import DataTable from 'datatables.net-dt'
 import "datatables.net-dt/css/jquery.dataTables.min.css";
-
+import "./CSS/WeatherMap.css"
 import $ from 'jquery'
 
 
@@ -17,7 +17,7 @@ const WeatherTable = (data) => {
 
       let tableheight = ""
 
-        if (vh <= 929) {tableheight = "810px"} 
+        if (vh <= 929) {tableheight = "730px"} 
         else if (vh <= 1289) {tableheight = "1131px"}
         else if (vh <= 1289) {tableheight = "1131px"}
         else if (vh <= 1449) {tableheight = "1284px"}
@@ -35,11 +35,11 @@ const WeatherTable = (data) => {
                 },
                 { data: "temp_c" },
                 { data: "feelslike_c" },
-                
-                
+                { data: "chance_of_rain" },
+                { data: "precip_mm"},
                 { data: "condition.text" },
-                {
-                  data: "condition.icon",
+                
+                  {data: "condition.icon",
                   "render": function (data) {
     
                     return '<img src="' + data + '">'
@@ -66,6 +66,8 @@ const WeatherTable = (data) => {
                 <th>Time</th>
                 <th>Temp (C)</th>
                 <th>Feels Like (C)</th>
+                <th>Rain %</th>
+                <th>Rain (mm)</th>
                 <th>Description</th>
                 <th></th>
               </tr>

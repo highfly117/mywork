@@ -1,0 +1,12 @@
+
+
+.dataTables_scroll{
+
+    color: white;
+
+}
+
+tr.odd{
+
+    background-color: rgb(25,25,25) !important
+}

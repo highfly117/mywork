@@ -35,14 +35,14 @@
 }
 
 .infopanel {
-    border-top: solid 1px #bfbfbf;
     height: calc(100vh - 81px);
-    background: white;
+    background: rgb(30,30,30);
+    padding-left: 0px;
 
 }
 
 .jsonPanel {
-    border-top: solid 1px #bfbfbf;
+    
     height: 100%;
     background: rgb(30,30,30);
     padding: 0px;

@@ -7,6 +7,7 @@ import SideNav from './Componants/SideNav'
 import Graph from './Componants/Graph'
 import WeatherTable from "./Componants/WeatherTable";
 import DataBar from "./Componants/DataBar";
+import WeatherMap from "./Componants/WeatherMap";
 
 
 import './App.css';
@@ -20,6 +21,7 @@ function App() {
     latitude: null,
     longitude: null,
   });
+  
 
 
   const tableRef = useRef(null);
@@ -33,7 +35,6 @@ function App() {
 
     tableRef.current.classList.remove('col-8')
     tableRef.current.classList.add('col')
-
     tableRef2.current.classList.remove('col-4')
     
   }
@@ -86,15 +87,24 @@ function App() {
   return (
     <div className="App">
 
-      <SideNav ></SideNav>
+      <SideNav></SideNav>
       {data ? (
-      <TopBar data={{locationName:data.location.name, locationCountry:data.location.country, updateData:setdata}} className="home_content"></TopBar>
+      <TopBar data={{locationName:data.location.name, locationCountry:data.location.country, updateData:setdata, updateLocation:setLocation}} className="home_content"></TopBar>
       ) : (
         <p>Loading...</p>
       )}
       <div  className="row Panels">
-        <div ref={tableRef} className="col-8 jsonPanel" >
-          <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }} >
+        <div className="col-4">
+        
+        {data ? (
+       <WeatherMap location={location}></WeatherMap> 
+      ) : (
+        <p>Loading...</p>
+      )}
+       
+        </div>
+        <div ref={tableRef} className="col-5 jsonPanel" >
+          <div className="row" style={{ marginLeft: "9px", marginRight: "9px" }} >
             {data ? (
               <DataBar data={{ DataType: "Max", DataValue: data.forecast.forecastday[0].day.maxtemp_c + " °C", TypeColor: "orange" }} className="col-sm"></DataBar>
             ) : (
@@ -146,7 +156,7 @@ function App() {
           )}
         </div>
 
-        <div ref={tableRef2} className="col-4 infopanel">
+        <div ref={tableRef2} className="col-3 infopanel">
           {data ? (
             <WeatherTable data={data}></WeatherTable>
           ) : (

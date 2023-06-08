@@ -19,8 +19,8 @@ const DataBar = (data) => {
 
     const DataBarStyle = {
         width: isMobileDevice() ? '79px' : '100%',
-        margin: isMobileDevice() ? '10px 2px 0px 2px' : '10px 10px 0px 10px',
-        height: isMobileDevice() ? '94px' : '130px'
+        margin: isMobileDevice() ? '10px 2px 0px 2px' : '10px 5px 0px 5px',
+        height: isMobileDevice() ? '94px' : '116px'
     }
 
     const h2Style = {
@@ -29,7 +29,7 @@ const DataBar = (data) => {
         "color":data.data.TypeColor
     }
     const DataStyle = {
-        "fontSize": isMobileDevice() ? '0.9rem' : '2rem',
+        "fontSize": isMobileDevice() ? '0.9rem' : '1.5rem',
         "min-width": isMobileDevice() ? '60px' : 'none'
     }
 

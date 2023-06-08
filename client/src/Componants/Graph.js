@@ -48,15 +48,15 @@ const Graph = (data) => {
         let svgw = 300;
         let svgh = 0;
 
-        if (vh < 1080) { svgh = 665 }
+        if (vh < 1080) { svgh = 645 }
         else if (vh == 1080) { svgh = 800 }
         else if (vh < 1440) { svgh = 1000 }
         else if (vh == 1440) { svgh = 1135 }
         else if (vh <= 1600) { svgh = 1155 }
         if (vw < 500) {svgw = 300}
         else if (vw <= 1920) { svgw = 1475 }
-        else if (vw <= 2560) { svgw = 1475 }
-        else if (vw <= 3440) { svgw = 2050 }
+        else if (vw <= 2560) { svgw = 875 }
+        else if (vw <= 3440) { svgw =  1525}
 
         
 
