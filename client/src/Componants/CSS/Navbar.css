@@ -1,3 +1,16 @@
-.navbarRE{
+.navbarRE {}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    height: 81px
+}
+
+.form-control{
+
+    height: 4vh;
+    width: 75vw;
+    font-size: 32px;
     
+
 }

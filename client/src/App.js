@@ -22,16 +22,45 @@ function App() {
   });
 
 
-  const tableName = "table1"
+  const tableRef = useRef(null);
+  const tableRef2 = useRef(null);
+
+  const isMobileDevice = () => {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
+  const mobilesettings = () => {
+
+    tableRef.current.classList.remove('col-8')
+    tableRef.current.classList.add('col')
+
+    tableRef2.current.classList.remove('col-4')
+    
+  }
+
+//   const PanelStyle = {
+//     left: isMobileDevice() ? '72px' : '252px',
+//     width: isMobileDevice() ? 'calc(100% - 60px)' : 'calc(100% - 240px)'
+// }
 
   useEffect(() => {
+
+    if (isMobileDevice()) {
+
+      console.log("yes mobile")
+
+      mobilesettings();
+      
+  }else{console.log("not mobile")}
 
     const loadData = async (latitude, longitude) => {
       try {
         console.log(latitude, longitude);
-        //const response = await axios.get("http://localhost:5000/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
-        const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        //const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        console.log(response.data)
         setdata(response.data);
+       
       } catch (error) {
         console.log(error);
       };
@@ -59,12 +88,12 @@ function App() {
 
       <SideNav ></SideNav>
       {data ? (
-      <TopBar data={{locationName:data.location.name, locationCountry:data.location.country}} className="home_content"></TopBar>
+      <TopBar data={{locationName:data.location.name, locationCountry:data.location.country, updateData:setdata}} className="home_content"></TopBar>
       ) : (
         <p>Loading...</p>
       )}
-      <div className="row Panels">
-        <div className="col-8 jsonPanel" >
+      <div  className="row Panels">
+        <div ref={tableRef} className="col-8 jsonPanel" >
           <div className="row" style={{ marginLeft: "0px", marginRight: "0px" }} >
             {data ? (
               <DataBar data={{ DataType: "Max", DataValue: data.forecast.forecastday[0].day.maxtemp_c + " °C", TypeColor: "orange" }} className="col-sm"></DataBar>
@@ -87,7 +116,7 @@ function App() {
               <p>Loading...</p>
             )}
             {data ? (
-              <DataBar data={{ DataType: "Wind Speed Direction", DataValue: data.current.wind_dir, TypeColor: "greenyellow" }} className="col-sm"></DataBar>
+              <DataBar data={{ DataType: "Wind Direction", DataValue: data.current.wind_dir, TypeColor: "greenyellow" }} className="col-sm"></DataBar>
             ) : (
               <p>Loading...</p>
             )}
@@ -110,14 +139,14 @@ function App() {
 
           </div>
 
-          {data ? (
+          {data && isMobileDevice() != true ? (
             <Graph data={data} className="D3Graphs"></Graph>
           ) : (
-            <p>Loading...</p>
+            <div></div>
           )}
         </div>
 
-        <div className="col-4 infopanel">
+        <div ref={tableRef2} className="col-4 infopanel">
           {data ? (
             <WeatherTable data={data}></WeatherTable>
           ) : (

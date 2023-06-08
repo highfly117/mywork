@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useEffect, useRef} from "react";
 import "./CSS/SideNav.css";
 import Uploadbutton from "./Uploadbutton";
 import { DiReact } from 'react-icons/di'
@@ -15,9 +15,39 @@ const SideNav = (props) => {
     const collapse = () => {
         sideRef.current.classList.toggle('active')
     } 
+
+    const mobilecollapse = () => {
+        sideRef.current.classList.remove('active')
+
+    } 
+
+    const isMobileDevice = () => {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    };
+
+    
+
+    
+
+
+    useEffect(() => {
+        if (isMobileDevice()) {
+
+            console.log("yes mobile")
+            mobilecollapse();
+
+           
+
+        }else{console.log("not mobile")}
+
+
+
+    }, []);
+
+    
     
     return (
-        <div ref={sideRef}className="sideNav active">
+        <div  ref={sideRef}className="sideNav active">
 
             <div className="logo_content">
                 <div className="logo">

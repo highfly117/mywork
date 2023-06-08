@@ -35,8 +35,8 @@ const WeatherTable = (data) => {
                 },
                 { data: "temp_c" },
                 { data: "feelslike_c" },
-                { data: "temp_f." },
-                { data: "feelslike_f" },
+                
+                
                 { data: "condition.text" },
                 {
                   data: "condition.icon",
@@ -66,8 +66,6 @@ const WeatherTable = (data) => {
                 <th>Time</th>
                 <th>Temp (C)</th>
                 <th>Feels Like (C)</th>
-                <th>Temp (F)</th>
-                <th>Feels Like (F)</th>
                 <th>Description</th>
                 <th></th>
               </tr>

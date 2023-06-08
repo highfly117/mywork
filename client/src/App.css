@@ -21,7 +21,7 @@
     position: absolute;
     height: calc(100vh - 56px);
     width: calc(100% - 78px);
-    top: 50px;
+    top: 75px;
     left: 90px;
     transition: all 0.5 ease;
     margin-top: 6px;

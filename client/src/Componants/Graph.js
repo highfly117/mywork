@@ -45,7 +45,7 @@ const Graph = (data) => {
         // console.log(Math.round(Math.max.apply(Math, tempplot)))
 
 
-        let svgw = 1475;
+        let svgw = 300;
         let svgh = 0;
 
         if (vh < 1080) { svgh = 665 }
@@ -53,9 +53,12 @@ const Graph = (data) => {
         else if (vh < 1440) { svgh = 1025 }
         else if (vh <= 1440) { svgh = 1170 }
         else if (vh <= 1600) { svgh = 1175 }
-        if (vw <= 1920) { svgw = 1475 }
+        if (vw < 500) {svgw = 300}
+        else if (vw <= 1920) { svgw = 1475 }
         else if (vw <= 2560) { svgw = 1475 }
         else if (vw <= 3440) { svgw = 2050 }
+
+        
 
 
         const svg = d3.select(svgRef.current)
