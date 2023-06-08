@@ -56,8 +56,8 @@ function App() {
     const loadData = async (latitude, longitude) => {
       try {
         console.log(latitude, longitude);
-        const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
-        //const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        //const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
+        const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params:{latitude:latitude,longitude:longitude}});
         console.log(response.data)
         setdata(response.data);
        
