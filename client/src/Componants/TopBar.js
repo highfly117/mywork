@@ -42,8 +42,8 @@ export default function GoogleMaps({ data }) {
   const loadData = async (search) => {
 
     try {
-      const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", { params: { search } });
-      //const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params: { search }});
+      //const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", { params: { search } });
+      const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", {params: { search }});
      // console.log(response.data);
       if (response.data.error) {
 
