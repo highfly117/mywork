@@ -31,13 +31,13 @@ function App() {
     return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };
 
-  // const mobilesettings = () => {
+  const mobilesettings = () => {
 
-  //   tableRef.current.classList.remove('col-8')
-  //   tableRef.current.classList.add('col')
-  //   tableRef2.current.classList.remove('col-4')
+    tableRef.current.classList.remove('col-8')
+    tableRef.current.classList.add('col')
+    tableRef2.current.classList.remove('col-4')
     
-  // }
+  }
 
 //   const PanelStyle = {
 //     left: isMobileDevice() ? '72px' : '252px',
