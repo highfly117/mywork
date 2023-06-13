@@ -5,6 +5,7 @@ import TopBarMob from './Componants/Mob/TopBarMob';
 import SideNavMob from './Componants/Mob/SideNavMob'
 import WeatherMapMob from "./Componants/Mob/WeatherMapMob";
 import DataBar from "./Componants/DataBar";
+import WeatherCard from "./Componants/Mob/WeatherCard";
 
 import './AppMobile.css';
 
@@ -40,12 +41,12 @@ function AppMobile() {
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
-    
+
         loadData(latitude, longitude);
       },
       async (error) => {
         console.error("Error Code = " + error.code + " - " + error.message);
-    
+
         try {
           // Replace 'your_api_key' with your actual API key
           const response = await axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAFEPBEgSJFCqgaJsZH6HeyfKdd9IJ-MIc');
@@ -73,7 +74,7 @@ function AppMobile() {
         <p>Loading...</p>
       )}
       <div className="row Panels">
-        <div className="row" style={{ height: "50vh", paddingRight:"0px"}}>
+        <div className="row" style={{ height: "50vh", paddingRight: "0px" }}>
           {data ? (
             <WeatherMapMob location={location}></WeatherMapMob>
           ) : (
@@ -82,41 +83,13 @@ function AppMobile() {
 
         </div>
 
-        <div style={{ paddingRight: "0px", height:"15vh" }} className="row">
+        <div style={{ paddingRight: "0px", height: "15vh" }} className="row">
 
           {data ? (
 
             <div style={{ paddingRight: "0px" }} className="row">
 
-              <div style={{ color: "white", backgroundColor: "#39536d", fontSize: "10px", paddingLeft: "0px", paddingRight: "0px" }}>
-                <div class="container">
-                  <div class="row">
-                    <div class="col"><img src={data.current.condition.icon}></img></div>
-                    <div style={{ textAlign: "end", paddingRight: "5px" }} class="col">
-                      <a>{data.forecast.forecastday[0].day.maxtemp_c}/{data.forecast.forecastday[0].day.mintemp_c}°C</a><br></br>
-                      <strong><a style={{ fontSize: "15px" }}>{data.current.temp_c}°C</a></strong><br></br>
-                      <a>Feels like: {data.current.feelslike_c}°C</a><br></br>
-                      <strong><a style={{ color: "gray" }}>{data.current.condition.text}</a></strong><br></br>
-                    </div>
-                    <div class="w-100"></div>
-                    <div style={{ textAlign: "left", paddingLeft: "5px" }} class="col">
-                      <a><strong>UV Index: </strong>{data.current.uv}</a><br></br>
-                      <a><strong>Humidity:</strong> {data.current.humidity}%</a><br></br>
-                      <a><strong>Wind:</strong> {data.current.wind_mph}/{data.current.wind_dir} mph</a><br></br>
-                      <a><strong>Precip:</strong> {data.forecast.forecastday[0].day.totalprecip_mm}mm</a><br></br>
-                    </div>
-                    <div class="col" style={{textAlign: "end",paddingRight: "5px" }}>
-                    <a></a><br></br>
-                    <a></a><br></br>
-                      <a><strong>Sun Rise: </strong>{data.forecast.forecastday[0].astro.sunrise}</a><br></br>
-                      <a><strong>Sun Set:</strong> {data.forecast.forecastday[0].astro.sunset}</a><br></br>
-                      
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+              <WeatherCard data={data} />
 
             </div>
 
