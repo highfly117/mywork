@@ -6,8 +6,10 @@ import SideNavMob from './Componants/Mob/SideNavMob'
 import WeatherMapMob from "./Componants/Mob/WeatherMapMob";
 import DataBar from "./Componants/DataBar";
 import WeatherCard from "./Componants/Mob/WeatherCard";
+import ForcastCard from "./Componants/Mob/ForcastCard";
 
 import './AppMobile.css';
+
 
 function AppMobile() {
   const [data, setdata] = useState(null)
@@ -83,7 +85,7 @@ function AppMobile() {
 
         </div>
 
-        <div style={{ paddingRight: "0px", height: "15vh" }} className="row">
+        <div style={{ paddingRight: "0px", height: "155px" }} className="row">
 
           {data ? (
 
@@ -97,6 +99,32 @@ function AppMobile() {
             <p>Loading...</p>
           )}
 
+
+
+        </div>
+
+        <div className="row" style={{}}>
+
+          {data ? (
+          <ForcastCard data={data} ></ForcastCard>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {data ? (
+          <ForcastCard data={data} ></ForcastCard>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {data ? (
+          <ForcastCard data={data} ></ForcastCard>
+          ) : (
+            <p>Loading...</p>
+          )}
+          {data ? (
+          <ForcastCard data={data} ></ForcastCard>
+          ) : (
+            <p>Loading...</p>
+          )}
 
 
         </div>

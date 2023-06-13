@@ -4,7 +4,7 @@ import "../CSS/Mob/WeatherCard.css"
 
 const WeatherCard = ({ data }) => {
   return (
-    <div style={{ color: "white", backgroundColor: "#39536d", fontSize: "10px", paddingLeft: "0px", paddingRight: "0px" }}>
+    <div style={{ color: "white", backgroundColor: "#39536d", fontSize: "12px", paddingLeft: "0px", paddingRight: "0px" }}>
       <div className="container">
         <div className="row">
           <div className="col"><img src={data.current.condition.icon} alt="weather condition"/></div>
