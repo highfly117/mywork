@@ -1,0 +1,41 @@
+.navbarRE {
+
+    position: absolute;
+    height: 50px;
+    width: calc(100% - 61px);
+    left: 61px;
+    transition: all 0.5 ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    height: 55px
+}
+
+.form-control{
+
+    height: 55px;
+    width: 75vw;
+    font-size: 12px;
+    
+
+}
+
+.navbar-brand{
+    text-wrap: balance;
+    font-size: 10px;
+    margin: 0px 0px 0px 10px;
+}
+
+.MuiInputLabel-formControl {
+
+    top: -9px !important;
+    font-size: 12px !important;
+
+}
+
+.leaflet-control-attribution{
+    font-size: 6px;
+}
+

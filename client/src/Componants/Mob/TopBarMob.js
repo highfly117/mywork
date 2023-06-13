@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 
-import "./CSS/Navbar.css";
+import "../CSS/Mob/NavbarMob.css";
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -137,7 +137,7 @@ export default function GoogleMaps({ data }) {
   return (
     <div className="navbarRE">
       <nav className="navbar bg-light" style={{ "flexWrap": "nowrap" }}>
-        <a className="navbar-brand" style={{ "marginLeft": "15px" }}>Weather API - {data.locationName + ", "} {data.locationCountry}  </a>
+        <a className="navbar-brand" >Weather API - {data.locationName + ", "} {data.locationCountry}  </a>
         <Autocomplete
           id="google-map-demo"
           sx={{ width: 300 }}
@@ -160,7 +160,14 @@ export default function GoogleMaps({ data }) {
             setInputValue(newInputValue);
           }}
           renderInput={(params) => (
-            <TextField style={{fontSize:"12px"}}{...params} label="Add a location" fullWidth />
+            <TextField {...params} 
+            label="Add a location" 
+            fullWidth 
+            InputProps={{ 
+              ...params.InputProps, 
+              style: { height: '30px', padding: '0 10px' }
+            }} 
+          />
           )}
           renderOption={(props, option) => {
             const matches =
