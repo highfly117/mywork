@@ -22,8 +22,8 @@ const WeatherCard = ({ data }) => {
             <p className="pData"><strong>Precip:</strong> {data.forecast.forecastday[0].day.totalprecip_mm}mm</p>
           </div>
           <div className="col" style={{textAlign: "end",paddingRight: "5px" }}>
-            <p className="pData"></p>
-            <p className="pData"></p>
+            <br></br>
+            <br></br>
             <p className="pData"><strong>Sun Rise: </strong>{data.forecast.forecastday[0].astro.sunrise}</p>
             <p className="pData"><strong>Sun Set:</strong> {data.forecast.forecastday[0].astro.sunset}</p>
           </div>
