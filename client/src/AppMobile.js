@@ -76,7 +76,7 @@ function AppMobile() {
         <p>Loading...</p>
       )}
       <div className="row Panels">
-        <div className="row row-5" style={{paddingRight: "0px" }}>
+        <div className="row row-5" style={{ paddingRight: "0px" }}>
           {data ? (
             <WeatherMapMob location={location}></WeatherMapMob>
           ) : (
@@ -85,47 +85,52 @@ function AppMobile() {
 
         </div>
 
-          {data ? (
+        {data ? (
 
-            <div style={{ paddingRight: "0px" }} className="row row-3">
+          <div style={{ paddingRight: "0px" }} className="row row-3">
 
-              <WeatherCard data={data} />
+            <WeatherCard data={data} />
 
-            </div>
+          </div>
 
-          ) : (
-            <p>Loading...</p>
-          )}
-
-
-
-       
-
-        <div className="row row-4" style={{}}>
-
-          {data ? (
-          <ForcastCard data={data} ></ForcastCard>
-          ) : (
-            <p>Loading...</p>
-          )}
-          {data ? (
-          <ForcastCard data={data} ></ForcastCard>
-          ) : (
-            <p>Loading...</p>
-          )}
-          {data ? (
-          <ForcastCard data={data} ></ForcastCard>
-          ) : (
-            <p>Loading...</p>
-          )}
-          {data ? (
-          <ForcastCard data={data} ></ForcastCard>
-          ) : (
-            <p>Loading...</p>
-          )}
+        ) : (
+          <p>Loading...</p>
+        )}
 
 
+
+
+
+        <div className="row row-4 ">
+          <div className="d-flex flex-nowrap overflow-auto ForcastCardContainer">
+            {data ? (
+              <ForcastCard data={data} ></ForcastCard>
+            ) : (
+              <p>Loading...</p>
+            )}
+            {data ? (
+              <ForcastCard data={data}></ForcastCard>
+            ) : (
+              <p>Loading...</p>
+            )}
+            {data ? (
+              <ForcastCard data={data}></ForcastCard>
+            ) : (
+              <p>Loading...</p>
+            )}
+            {data ? (
+              <ForcastCard data={data}></ForcastCard>
+            ) : (
+              <p>Loading...</p>
+            )}
+            {data ? (
+              <ForcastCard data={data}></ForcastCard>
+              ) : (
+              <p>Loading...</p>
+            )}
+          </div>
         </div>
+
 
 
       </div>

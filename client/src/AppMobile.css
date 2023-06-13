@@ -58,3 +58,14 @@
 .row-12{
     height:100%;
 }
+.ForcastCardContainer{
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    height: 100%;
+
+}
+
+.ForcastCardContainer::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}

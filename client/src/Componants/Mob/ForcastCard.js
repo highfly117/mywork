@@ -4,7 +4,7 @@ import "../CSS/Mob/ForcastCardMob.css"
 
 const ForcastCard = ({ data }) => {
     return (
-        <div className="card" style={{ width: "25%", borderRadius: "0px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="card col">
             <img src={data.current.condition.icon} style={{ width: "64px", height: "64px", borderRadius:"0px"}} className="card-img-top" alt="Weather icon"/>
             <div className="card-body">
                 <h5 className="card-title">16:00</h5>
