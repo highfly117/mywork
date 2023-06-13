@@ -82,7 +82,7 @@ function AppMobile() {
 
         </div>
 
-        <div style={{ paddingRight: "0px" }} className="row">
+        <div style={{ paddingRight: "0px", height:"15vh" }} className="row">
 
           {data ? (
 
