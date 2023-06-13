@@ -1,10 +1,18 @@
 .Panels {
     position: absolute;
     height: calc(100vh - 350px);
-    width: calc(100% - 36px);
+    width: calc(100% - 60px);
     top: 49px;
-    left: 72px;
+    left: 60px;
     transition: all 0.5 ease;
     margin-top: 6px;
+    margin-left: 0px;
+
+}
+
+.Panels div {
+  
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
 
 }

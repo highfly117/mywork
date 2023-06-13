@@ -73,7 +73,7 @@ function AppMobile() {
         <p>Loading...</p>
       )}
       <div className="row Panels">
-        <div className="row" style={{ height: "50vh" }}>
+        <div className="row" style={{ height: "50vh", paddingRight:"0px"}}>
           {data ? (
             <WeatherMapMob location={location}></WeatherMapMob>
           ) : (
