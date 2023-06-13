@@ -40,13 +40,22 @@ function AppMobile() {
       (position) => {
         const { latitude, longitude } = position.coords;
         setLocation({ latitude, longitude });
-
+    
         loadData(latitude, longitude);
       },
-      (error) => {
+      async (error) => {
         console.error("Error Code = " + error.code + " - " + error.message);
-
-        loadData(undefined, undefined);
+    
+        try {
+          // Replace 'your_api_key' with your actual API key
+          const response = await axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAFEPBEgSJFCqgaJsZH6HeyfKdd9IJ-MIc');
+          const data = response.data;
+          setLocation({ latitude: data.location.lat, longitude: data.location.lng });
+          loadData(data.location.lat, data.location.lng);
+        } catch (googleApiError) {
+          console.error(googleApiError);
+          loadData(undefined, undefined);
+        }
       }
     );
 
