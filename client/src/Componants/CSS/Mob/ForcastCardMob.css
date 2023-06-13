@@ -2,7 +2,7 @@
     min-width: 75px;
     border-radius: 0px; 
     display: flex;
-    justify-content: center;
+    
     align-items: center;
 
 }
@@ -16,6 +16,11 @@
     width: 100%;
 
 }
+
+.card-title{
+    margin: 0px auto 25px auto;
+
+  }
 
 .firstCard{
     border-bottom: 3px solid lightskyblue;
