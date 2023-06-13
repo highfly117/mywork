@@ -2,8 +2,8 @@
 
     position: absolute;
     height: 50px;
-    width: calc(100% - 60px);
-    left: 60px;
+    width: calc(100% - 50px);
+    left: 50px;
     transition: all 0.5 ease;
 }
 
