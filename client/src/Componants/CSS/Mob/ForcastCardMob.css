@@ -16,3 +16,13 @@
     width: 100%;
 
 }
+
+.firstCard{
+    border-bottom: 3px solid lightskyblue;
+
+}
+
+.nextCard{
+    border-top: 3px solid orange;
+
+}
