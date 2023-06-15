@@ -7,9 +7,14 @@ const WeatherCard = ({ data }) => {
       <div style={{ color: "white", backgroundColor: "#39536d", fontSize: "13px", paddingLeft: "0px", paddingRight: "0px" }} className="d-flex flex-column">
         <div className="container" style={{ flexGrow: 1 }}>
           <div className="row">
-            <div className="col"><img src={data.current.condition.icon} alt="weather condition"/></div>
+            <div className="col" style={{display:"flex"}}><img src={data.current.condition.icon} alt="weather condition"/><div>
+            <p className="pData" style={{fontSize:"14px"}}><strong>Max/Min</strong></p>
+            <p className="pData" style={{fontSize:"14px"}}>{data.forecast.forecastday[0].day.maxtemp_c}/{data.forecast.forecastday[0].day.mintemp_c}°C</p>
+            </div>
+           
+            </div>
+            
             <div style={{ textAlign: "end", paddingRight: "5px" }} className="col">
-              <p className="pData">{data.forecast.forecastday[0].day.maxtemp_c}/{data.forecast.forecastday[0].day.mintemp_c}°C</p>
               <strong><p className="pData" style={{ fontSize: "15px" }}>{data.current.temp_c}°C</p></strong>
               <p className="pData">Feels like: {data.current.feelslike_c}°C</p>
               <strong><p className="pData" style={{ color: "gray" }}>{data.current.condition.text}</p></strong>

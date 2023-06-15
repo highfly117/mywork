@@ -2,7 +2,6 @@
     min-width: 75px;
     border-radius: 0px; 
     display: flex;
-    
     align-items: center;
 
 }
@@ -10,7 +9,6 @@
 .card-body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     font-size: 12px;
     width: 100%;
@@ -18,7 +16,7 @@
 }
 
 .card-title{
-    margin: 0px auto 25px auto;
+    margin: 15px auto 5px auto;
 
   }
 

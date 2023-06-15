@@ -18,7 +18,7 @@ function AppMobile() {
     longitude: null,
   });
   const [futureData, setFutureData] = useState([]);
-
+  const [selectedOption, setSelectedOption] = useState('Hourly');
 
 
 
@@ -32,8 +32,8 @@ function AppMobile() {
     const loadData = async (latitude, longitude) => {
       try {
         console.log(latitude, longitude);
-        //const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", { params: { latitude: latitude, longitude: longitude } });
-        const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", { params: { latitude: latitude, longitude: longitude } });
+        const response = await axios.get("http://192.168.0.140:5000/api/v1/getWeather", { params: { latitude: latitude, longitude: longitude } });
+        //const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/getWeather", { params: { latitude: latitude, longitude: longitude } });
         console.log(response.data)
         setdata(response.data);
         logTime(response.data)
@@ -69,30 +69,63 @@ function AppMobile() {
 
     const logTime = (data) => {
       try {
-        console.log(data)
         let currentDate = new Date(); // Get current date and time
         let currentHour = currentDate.getHours(); // Get the current hour
         let hourlyData = data.forecast.forecastday[0].hour; // Access the nested hourly data
+        let hourlyDataTomorrow = data.forecast.forecastday[1].hour;
         let newFutureData = []; // This will hold the entries that are after or at the current hour
 
-        for (let i = 0; i < hourlyData.length; i++) {
-          let entryDate = new Date(hourlyData[i].time); // Convert the entry time string to a Date object
-          let entryHour = entryDate.getHours(); // Get the hour from the entry time
+        console.log(selectedOption)
 
-          if (entryHour >= currentHour) {
-            newFutureData.push(hourlyData[i]); // Add the entry to the futureData array
+        if(selectedOption === "3day"){
+
+          
+          newFutureData.push(hourlyData[currentHour])
+
+          for (let i = 1; i <= 2; i++){
+
+            newFutureData.push(data.forecast.forecastday[i])
+
+          }
+          console.log(newFutureData)
+          setFutureData(newFutureData);
+
+        }else{
+          if (currentHour > 19) {
+          
+            for (let i = 0; i < hourlyData.length; i++) {
+              let entryDate = new Date(hourlyData[i].time); // Convert the entry time string to a Date object
+              let entryHour = entryDate.getHours(); // Get the hour from the entry time
+  
+              if (entryHour >= currentHour) {
+                newFutureData.push(hourlyData[i]); // Add the entry to the futureData array
+              }
+            }
+            
+            newFutureData = newFutureData.concat(hourlyDataTomorrow)
+            
+            setFutureData(newFutureData); // Update the state
+          }else{
+            for (let i = 0; i < hourlyData.length; i++) {
+              let entryDate = new Date(hourlyData[i].time); // Convert the entry time string to a Date object
+              let entryHour = entryDate.getHours(); // Get the hour from the entry time
+  
+              if (entryHour >= currentHour) {
+                newFutureData.push(hourlyData[i]); // Add the entry to the futureData array
+              }
+            }
+            setFutureData(newFutureData); // Update the state
+  
           }
         }
-
-        setFutureData(newFutureData); // Update the state
-        console.log(newFutureData)
+       
       } catch (error) {
         console.log(error);
       }
     }
 
 
-  }, [])
+  }, [selectedOption])
 
   return (
     <div className="AppMobile">
@@ -108,7 +141,7 @@ function AppMobile() {
       <div className="row Panels">
         <div className="row row-5" style={{ paddingRight: "0px" }}>
           {data ? (
-            <WeatherMapMob location={location}></WeatherMapMob>
+            <WeatherMapMob location={location} selectedOption={selectedOption} setSelectedOption={setSelectedOption}></WeatherMapMob>
           ) : (
             <p>Loading...</p>
           )}
@@ -122,21 +155,22 @@ function AppMobile() {
           <p>Loading...</p>
         )}
 
-<div className="row row-4 ">
-  <div className="d-flex flex-nowrap overflow-auto ForcastCardContainer">
-    {futureData.length > 0 ? (
-      futureData.map((data, index) => 
-        <ForcastCard 
-          key={index} 
-          data={data} 
-          className={index === 0 ? "firstCard" : "nextCard"} 
-        />
-      )
-    ) : (
-      <p>Loading...</p>
-    )}
-  </div>
-</div>
+        <div className="row row-4 ">
+          <div className="d-flex flex-nowrap overflow-auto ForcastCardContainer">
+            {futureData.length > 0 ? (
+              futureData.map((data, index) =>
+                <ForcastCard
+                  key={index}
+                  data={data}
+                  className={index === 0 ? "firstCard" : "nextCard"}
+                  flag ={futureData.length === 3 ? "3day":"hourly"}
+                />
+              )
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
 
       </div>
 
