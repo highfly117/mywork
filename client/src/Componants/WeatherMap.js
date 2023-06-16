@@ -36,13 +36,13 @@ const WeatherMap = (props) => {
           style={{width:'100%', height:'100%'}} 
           className="full-height-map"
           center={position}
-          zoom={3}
+          zoom={6}
           minZoom={3}
           maxZoom={19}
           maxBounds={[[-85.06, -180], [85.06, 180]]}
           scrollWheelZoom={true}
         >
-          <ChangeView center={position} zoom={8} />
+          <ChangeView center={position} zoom={6} />
           <TileLayer
             attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
             url={MAPBOX_URL}
@@ -50,6 +50,7 @@ const WeatherMap = (props) => {
           <TileLayer
             attribution='&copy; <a href="https://www.tomorrow.io/weather-api">Powered by Tomorrow.io</a>'
             url={`https://api.tomorrow.io/v4/map/tile/{z}/{x}/{y}/${DATA_FIELD}/${TIMESTAMP}.png?apikey=${API_KEY}`}
+            opacity={0.8}
           />
           <Marker position={position} icon={defaultIcon}>
             <Popup>

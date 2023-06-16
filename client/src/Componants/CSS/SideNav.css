@@ -12,7 +12,7 @@
   margin: 0;
   box-sizing: border-box;
   transition: all 0.5 ease;
-
+  border-right:1px solid lightgray
 }
 
 .sideNav.active {
