@@ -140,7 +140,7 @@ export default function GoogleMaps({ data }) {
         <a className="navbar-brand" style={{ "marginLeft": "15px" }}>Weather API - {data.locationName + ", "} {data.locationCountry}  </a>
         <Autocomplete
           id="google-map-demo"
-          sx={{ width: 300 }}
+          sx={{ width: 300}}
           getOptionLabel={(option) =>
             typeof option === 'string' ? option : option.description
           }
@@ -160,7 +160,14 @@ export default function GoogleMaps({ data }) {
             setInputValue(newInputValue);
           }}
           renderInput={(params) => (
-            <TextField style={{fontSize:"12px"}}{...params} label="Add a location" fullWidth />
+            <TextField {...params} 
+            label="Add a location" 
+            fullWidth 
+            InputProps={{ 
+              ...params.InputProps, 
+              style: { height: '42px', padding: '0 10px' }
+            }} 
+          />
           )}
           renderOption={(props, option) => {
             const matches =

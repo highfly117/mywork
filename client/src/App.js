@@ -98,7 +98,8 @@ function App() {
 
         </div>
 
-        <div className="row row-1 dataRow"  >
+        <div className="row row-4 bottomRow"  >
+          <div className="row row-2 dataRow" >
         {data ? (
             <DataBar data={{ DataType: "Temperature", DataValue: data.forecast.forecastday[0].hour[isHour].temp_c + " °C", TypeColor: "orange" }} className="col-sm"></DataBar>
           ) : (
@@ -149,16 +150,18 @@ function App() {
           ) : (
             <p>Loading...</p>
           )}
+          </div>
 
-
-        </div>
-        <div className="row row-3 graphRow">
+          <div className="row row-10 graphRow">
         {data ? (
           <Graph data={data} className="D3Graphs"></Graph>
         ) : (
           <div></div>
         )}
         </div>
+
+        </div>
+        
       </div>
 
       {/* <div ref={tableRef2} className="col-3 infopanel">

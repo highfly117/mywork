@@ -19,4 +19,11 @@
     text-wrap: balance;
   
 }
+.MuiInputLabel-formControl {
+
+    top: -5px !important;
+    font-size: 14px !important;
+
+}
+
 

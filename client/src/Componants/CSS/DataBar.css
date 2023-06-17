@@ -2,7 +2,8 @@
     
     background-color: #21262d;
     margin: 0px 0px 0px 0px;
-    border-top:1px solid lightgray
+    border-top:1px solid gray;
+    padding: 10px 0px 0px 10px;
 }
 
 h2{
@@ -18,12 +19,8 @@ h2{
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    justify-content: center;
+    
     height: 50%;
-    font-size: 2rem;
+    font-size: 14px;
 
 }

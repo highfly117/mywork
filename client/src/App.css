@@ -5,7 +5,7 @@
 
 .navbarRE {
     position: absolute;
-    height: 50px;
+    height: 59px;
     width: calc(100% - 78px);
     left: 78px;
     transition: all 0.5 ease;
@@ -61,6 +61,12 @@
 
     padding: 0px;
     --bs-gutter-x: 0px;
+}
+
+.bottomRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+
 }
 
 .dataRow{
