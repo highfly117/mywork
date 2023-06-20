@@ -19,9 +19,11 @@ function AppMobile() {
   });
   const [futureData, setFutureData] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Hourly');
+  const [isActive, setIsActive] = useState(true);
 
-
-
+  const toggleActive = () => {
+    setIsActive(!isActive);
+  };
 
 
   useEffect(() => {
@@ -130,10 +132,10 @@ function AppMobile() {
   return (
     <div className="AppMobile">
 
-      <SideNavMob></SideNavMob>
+      <SideNavMob isActive={isActive} toggleActive={toggleActive}></SideNavMob>
 
       {data ? (
-        <TopBarMob data={{ locationName: data.location.name, locationCountry: data.location.country, updateData: setdata, updateLocation: setLocation }} className="home_content"></TopBarMob>
+        <TopBarMob data={{ locationName: data.location.name, locationCountry: data.location.country, updateData: setdata, updateLocation: setLocation }} className="home_content" isActive={isActive} toggleActive={toggleActive}></TopBarMob>
       ) : (
         <p>Loading...</p>
       )}

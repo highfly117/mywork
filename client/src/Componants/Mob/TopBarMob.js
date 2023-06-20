@@ -10,6 +10,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
+import { BiMenu } from "react-icons/bi";
+
+
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyAJiDxL5x2vUHgH77_f6WOyAIVRacWUWFI';
 const GOOGLE_GEOCODING_API_KEY = "AIzaSyDHTJQYNpmNtUB5wR8tsDll9-XW1VmOcwY";
@@ -28,7 +31,7 @@ function loadScript(src, position, id) {
 
 const autocompleteService = { current: null };
 
-export default function GoogleMaps({ data }) {
+export default function GoogleMaps({ data, toggleActive}) {
   const [value, setValue] = React.useState(null);
   const [inputValue, setInputValue] = React.useState('');
   const [options, setOptions] = React.useState([]);
@@ -137,6 +140,7 @@ export default function GoogleMaps({ data }) {
   return (
     <div className="navbarRE">
       <nav className="navbar bg-light" style={{ "flexWrap": "nowrap" }}>
+      <BiMenu  className="react-icons" id="btn" style={{color:'black'}} onClick={toggleActive}></BiMenu>
         <a className="navbar-brand" >Weather API - {data.locationName + ", "} {data.locationCountry}  </a>
         <Autocomplete
           id="google-map-demo"

@@ -1,9 +1,9 @@
 .Panels {
     position: absolute;
     height: calc(100vh - 55px);
-    width: calc(100% - 50px);
+    width: 100%;
     top: 49px;
-    left: 50px;
+    left: 0px;
     transition: all 0.5 ease;
     margin-top: 6px;
     margin-left: 0px;

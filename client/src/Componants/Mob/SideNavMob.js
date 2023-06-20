@@ -9,7 +9,7 @@ import { RiOrganizationChart } from "react-icons/ri";
 import { VscJson } from "react-icons/vsc";
 
 
-const SideNav = (props) => {
+const SideNav = ({isActive, toggleActive}) => {
 
     const sideRef = useRef(null);
     const collapse = () => {
@@ -25,7 +25,13 @@ const SideNav = (props) => {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     };
 
-    
+    useEffect(() => {
+        if (isActive) {
+            sideRef.current.classList.add('active');
+        } else {
+            sideRef.current.classList.remove('active');
+        }
+    }, [isActive]);
 
     
 

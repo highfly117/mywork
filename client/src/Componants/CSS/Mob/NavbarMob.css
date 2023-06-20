@@ -1,15 +1,14 @@
 .navbarRE {
-
     position: absolute;
     height: 50px;
-    width: calc(100% - 50px);
-    left: 50px;
+    width: 100%;
+    left: 0px;
     transition: all 0.5 ease;
 }
 
 .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     height: 55px
 }
 
@@ -39,3 +38,15 @@
     font-size: 6px;
 }
 
+.react-icons {
+    height: 30px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+    align-content: center;
+  }
+
+  .MuiAutocomplete-root{
+    margin-right: 10px;
+  }
