@@ -1,14 +1,12 @@
-* {}
-
 .sideNav {
   position: fixed;
   top: 0px;
   left: 0px;
   background-color: #21262d;
   height: 100%;
-  width: 50px;
+  width: 0px;
   color: white;
-  padding: 6px 14px 6px 0px;
+  padding: 0px;
   margin: 0;
   box-sizing: border-box;
   transition: all 0.5 ease;
