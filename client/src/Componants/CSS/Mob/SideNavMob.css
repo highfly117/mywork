@@ -9,7 +9,7 @@
   padding: 0px;
   margin: 0;
   box-sizing: border-box;
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
 
 }
 
@@ -101,7 +101,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: all 0.4 ease;
+  transition: all 0.4s ease;
   border-radius: 12px;
   white-space: nowrap
 }
@@ -180,7 +180,7 @@
   color: #11101d;
   font-size: 18px;
   margin-top: 10px;
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
 }
 
 .sideNav:active #faSearch {

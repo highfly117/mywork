@@ -19,7 +19,7 @@ function AppMobile() {
   });
   const [futureData, setFutureData] = useState([]);
   const [selectedOption, setSelectedOption] = useState('Hourly');
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   const toggleActive = () => {
     setIsActive(!isActive);

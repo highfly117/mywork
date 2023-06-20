@@ -53,13 +53,13 @@ const SideNav = ({isActive, toggleActive}) => {
     
     
     return (
-        <div  ref={sideRef}className="sideNav active">
+        <div  ref={sideRef}className="sideNav">
 
             <div className="logo_content">
                 <div className="logo">
                     <div className="logo_name"><DiReact size={"4rem"} />RnD</div>
                 </div>
-                <BiMenu onClick={collapse} className="react-icons" id="btn"></BiMenu>
+                <BiMenu onClick={toggleActive} className="react-icons" id="btn"></BiMenu>
             </div>
             <ul className="nav_list">
                 {/* <li>
