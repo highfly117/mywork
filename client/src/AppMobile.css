@@ -17,9 +17,23 @@
 
 }
 
+.navbarRE {
+    position: absolute;
+    height: 59px;
+    width: 100%;
+    left: 0px;
+    transition: all 0.5 ease;
+
+}
+
 .card-text{
     margin-bottom: 0px;
 
+}
+
+.sideNav.active~.Panels {
+    width: calc(100% - 243px);
+    left: 239px
 }
 
 .row-1{

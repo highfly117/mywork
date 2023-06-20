@@ -6,8 +6,8 @@
 .navbarRE {
     position: absolute;
     height: 59px;
-    width: 100%;
-    left: 0px;
+    width: calc(100% - 78px);
+    left: 78px;
     transition: all 0.5 ease;
 
 }
@@ -30,8 +30,8 @@
 }
 
 .sideNav.active~.Panels {
-    width: calc(100% - 243px);
-    left: 239px
+    width: calc(100% - 240px);
+    left: 252px
 }
 
 .infopanel {
