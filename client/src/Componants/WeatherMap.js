@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L, {Icon }from 'leaflet'
-
+import MapMenu from './Mob/MapMenu';
 import "../../node_modules/leaflet/dist/leaflet.css"
 import axios from 'axios';
 
@@ -31,7 +31,12 @@ const WeatherMap = (props) => {
     const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaGlnaGZseTExNyIsImEiOiJjbGluNWR4amUwbDk5M2txcjcybTRpbGo0In0.pdrbNFR2lyks_o2aQizU9Q';
     const MAPBOX_URL = `https://api.mapbox.com/styles/v1/mapbox/navigation-night-v1/tiles/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`;
 
+    console.log(MAPBOX_URL)
+
+
     return (
+      <div style={{position: 'relative'}}>
+         <MapMenu selectedOption={props.selectedOption} setSelectedOption={props.setSelectedOption}/>
         <MapContainer 
           style={{width:'100%', height:'100%'}} 
           className="full-height-map"
@@ -58,6 +63,7 @@ const WeatherMap = (props) => {
             </Popup>
           </Marker>
         </MapContainer>
+        </div>
       );
 };
 

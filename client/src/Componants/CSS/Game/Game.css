@@ -1,0 +1,361 @@
+
+
+.Game {
+
+    overflow-y: hidden;
+}
+
+.background {
+    background-image: url('../../../pxfuel\ \(1\).jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+
+.GamePanel{
+    
+    justify-content: center;
+    width: 85%;
+    height: 98%;
+    margin-top: 15px;
+}
+
+.ResourceBar{
+    background-color: #21262d;
+    width: 100%;
+    height: 80px;
+    margin-top: 15px;
+    padding-top: 4px;
+}
+.resourceRow{
+    display: flex;
+    justify-content: center;
+}
+.material{
+    background-color: #3d4653;
+    width: 125px;
+    height: 30px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.BuilidingPanel{
+    background-color: #21262d;
+    width: 100%;
+    height: 90%;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 15px;
+    
+
+}
+
+.BuildLocations{
+    height: 100%;
+    
+}
+
+.Locations{
+    background-color: #3d4653;
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 7px;
+    transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.Locations:hover{
+    background-color: #005794;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 10px -7px rgba(255, 255, 255, 0.3);
+}
+
+.Locations.active{
+    background-color: #006dba;
+}
+
+.Buildings{
+    height: 100%;
+    margin-left: 5px;
+}
+
+.Planet{
+    background-color: #3d4653;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 7px;
+    transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.IndustryWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    max-height: 165px;
+}
+
+.Industry{
+    background-color: #3d4653;
+    width: 15%;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 7px;
+    justify-content: space-between;
+    margin-left:9px
+}
+
+.NoSurvey{
+        background-color: #3d4653;
+    width: 15%;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 7px;
+    justify-content: space-between;
+    margin-left:84%
+}
+
+.buybutton{
+    background-color: rgb(0, 149, 255);
+    padding: 7px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    white-space: nowrap;
+}
+
+
+.GamenavbarRE {
+    position: absolute;
+    height: 59px;
+    width: calc(100% - 284px);
+    left: 284px;
+    transition: all 0.5s ease;
+
+}
+
+.sideNav.active~.Game .GamenavbarRE {
+    width: calc(100% - 411px);
+    left: 411px
+}
+
+.GamePanels {
+    position: absolute;
+    height: calc(100vh - 59px);
+    width: calc(100% - 283px);
+    top: 59px;
+    left: 295px;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.sideNav.active~.Game .GamePanels {
+    width: calc(100% - 422px);
+    left: 422px
+}
+
+.sideNav.active~.Game .GameSideBar {
+    
+    left: 205px
+}
+
+.infopanel {
+    height: calc(100vh - 81px);
+    background: rgb(30,30,30);
+    padding-left: 0px;
+
+}
+
+.jsonPanel {
+    
+    height: 100%;
+    background: rgb(30,30,30);
+    padding: 0px;
+
+}
+
+#jsonText {
+    height: calc(100vh - 81px);
+    overflow-x: hidden;
+    overflow-y: auto !important;
+
+
+}
+
+.mapRow{
+
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.bottomRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+
+}
+
+.dataRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.graphRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 10px;
+}
+
+.tg td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+    text-align: center;
+}
+
+.tg th {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-0pky {
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top;
+    
+}
+
+textarea {
+    border: none;
+    outline: none;
+    caret-color: #bfbfbf;
+    background-color: hsla(1, 1%, 100%, 1);
+
+
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    margin-left: 10px;
+  }
+
+  .Xaxis {
+
+    color: #909093;
+  }
+
+  .Xaxis .domain {
+
+    stroke: #909093 
+
+  }
+
+  .Yaxis {
+
+    color: #909093;
+  }
+
+  .Yaxis .domain {
+
+    stroke: #909093 
+
+  }
+
+  .row-1{
+    height: 8.33333333%;
+}
+.row-2{
+    height:16.66666667%;
+}
+.row-3{
+    height:25%;
+}
+.row-4{
+    height:33.33333333%;
+}
+.row-5{
+    height: 41.66666667%;
+}
+.row-6{
+    height:50%;
+}
+.row-7{
+    height:58.33333333%;
+}
+.row-8{
+    height:66.66666667%;
+}
+.row-9{
+    height:75%;
+}
+.row-10{
+    height:83.33333333%;
+}
+.row-11{
+    height:91.66666667%;
+}
+.row-12{
+    height:100%;
+}

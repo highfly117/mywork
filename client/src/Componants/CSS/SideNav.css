@@ -1,5 +1,3 @@
-* {}
-
 .sideNav {
   position: fixed;
   top: 0px;
@@ -11,12 +9,12 @@
   padding: 6px 14px 6px 0px;
   margin: 0;
   box-sizing: border-box;
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
   border-right:1px solid gray
 }
 
 .sideNav.active {
-  width: 240px;
+  width: 205px;
 
 
 }
@@ -103,7 +101,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  transition: all 0.4 ease;
+  transition: all 0.4s ease;
   border-radius: 12px;
   white-space: nowrap
 }
@@ -182,13 +180,18 @@
   color: #11101d;
   font-size: 18px;
   margin-top: 10px;
-  transition: all 0.5 ease;
+  transition: all 0.5s ease;
 }
 
 .sideNav:active #faSearch {
   background: #fff;
   color: #11101d;
+}
 
-
-
+.wrap-text .links_name {
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 24px;
+  height: 65px;
+padding-top: 7px;
 }

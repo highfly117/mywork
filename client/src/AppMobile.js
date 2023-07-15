@@ -28,9 +28,6 @@ function AppMobile() {
 
   useEffect(() => {
 
-
-
-
     const loadData = async (latitude, longitude) => {
       try {
         console.log(latitude, longitude);

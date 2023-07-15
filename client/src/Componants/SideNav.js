@@ -9,40 +9,12 @@ import { RiOrganizationChart } from "react-icons/ri";
 import { VscJson } from "react-icons/vsc";
 
 
-const SideNav = (props) => {
+const SideNav = ({props, changePanel}) => {
 
     const sideRef = useRef(null);
     const collapse = () => {
         sideRef.current.classList.toggle('active')
     } 
-
-    const mobilecollapse = () => {
-        sideRef.current.classList.remove('active')
-
-    } 
-
-    const isMobileDevice = () => {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    };
-
-    
-
-    
-
-
-    useEffect(() => {
-        if (isMobileDevice()) {
-
-            console.log("yes mobile")
-            mobilecollapse();
-
-           
-
-        }else{console.log("not mobile")}
-
-
-
-    }, []);
 
     
     
@@ -63,26 +35,26 @@ const SideNav = (props) => {
                     </a>
                 </li> */}
                 {/* <Uploadbutton  ></Uploadbutton> */}
-                <li>
+                <li onClick={() => {changePanel("Weather"); collapse()}}>
                     <a href="#">
-                        <HiVariable className="react-icons" />
-                        <span className="links_name">Weather and API demo</span>
+                        <HiVariable  className="react-icons" />
+                        <span className="links_name">Weather and API</span>
                     </a>
-                    <span className="tooltips">Variables</span>
+                    <span className="tooltips">Weather and API</span>
                 </li>
-                <li>
+                <li onClick={() => {changePanel("Game"); collapse()}}>
                     <a href="#">
                         <FaCodeBranch className="react-icons" />
-                        <span className="links_name">Show Branches</span>
+                        <span className="links_name">Game</span>
                     </a>
-                    <span className="tooltips">Show Branches</span>
+                    <span className="tooltips">Empire 2099</span>
                 </li>
-                <li>
+                <li className="wrap-text" onClick={() => {changePanel("Fitness"); collapse()}}>
                     <a href="#">
                         <RiOrganizationChart className="react-icons" />
-                        <span className="links_name">Tree View</span>
+                        <span className="links_name">FitnessQuest: Dungeon Edition</span>
                     </a>
-                    <span className="tooltips">Tree View</span>
+                    <span className="tooltips">FitnessQuest</span>
                 </li>
                 <li>
                     <a href="#">

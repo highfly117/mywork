@@ -1,0 +1,31 @@
+.FitnessnavbarRE {}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    padding-right: 20px;
+}
+
+.form-control{
+
+    height: 55px;
+    width: 75vw;
+    font-size: 28px;
+    
+
+}
+
+.navbar-brand{
+    text-wrap: balance;
+  
+}
+.MuiInputLabel-formControl {
+
+    top: -5px !important;
+    font-size: 14px !important;
+}
+
+#form-dialog-title{
+    color: black;
+}

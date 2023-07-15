@@ -1,0 +1,197 @@
+.WeatherApp {
+
+    overflow-y: hidden;
+}
+
+.WeathernavbarRE {
+    position: absolute;
+    height: 59px;
+    width: calc(100% - 78px);
+    left: 78px;
+    transition: all 0.5s ease;
+
+}
+
+.sideNav.active~.WeatherApp .WeathernavbarRE {
+    width: calc(100% - 205px);
+    left: 205px
+}
+
+.Panels {
+    position: absolute;
+    height: calc(100vh - 59px);
+    width: calc(100% - 78px);
+    top: 59px;
+    left: 90px;
+    transition: all 0.5s ease;
+
+}
+
+.sideNav.active~.WeatherApp .Panels {
+    width: calc(100% - 205px);
+    left: 217px
+}
+
+.infopanel {
+    height: calc(100vh - 81px);
+    background: rgb(30,30,30);
+    padding-left: 0px;
+
+}
+
+.jsonPanel {
+    
+    height: 100%;
+    background: rgb(30,30,30);
+    padding: 0px;
+
+}
+
+#jsonText {
+    height: calc(100vh - 81px);
+    overflow-x: hidden;
+    overflow-y: auto !important;
+
+
+}
+
+.mapRow{
+
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.bottomRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+
+}
+
+.dataRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.graphRow{
+    padding: 0px;
+    --bs-gutter-x: 0px;
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 10px;
+}
+
+.tg td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+    text-align: center;
+}
+
+.tg th {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-0pky {
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top;
+    
+}
+
+textarea {
+    border: none;
+    outline: none;
+    caret-color: #bfbfbf;
+    background-color: hsla(1, 1%, 100%, 1);
+
+
+}
+
+*::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 20px;
+    margin-left: 10px;
+  }
+
+  .Xaxis {
+
+    color: #909093;
+  }
+
+  .Xaxis .domain {
+
+    stroke: #909093 
+
+  }
+
+  .Yaxis {
+
+    color: #909093;
+  }
+
+  .Yaxis .domain {
+
+    stroke: #909093 
+
+  }
+
+  .row-1{
+    height: 8.33333333%;
+}
+.row-2{
+    height:16.66666667%;
+}
+.row-3{
+    height:25%;
+}
+.row-4{
+    height:33.33333333%;
+}
+.row-5{
+    height: 41.66666667%;
+}
+.row-6{
+    height:50%;
+}
+.row-7{
+    height:58.33333333%;
+}
+.row-8{
+    height:66.66666667%;
+}
+.row-9{
+    height:75%;
+}
+.row-10{
+    height:83.33333333%;
+}
+.row-11{
+    height:91.66666667%;
+}
+.row-12{
+    height:100%;
+}

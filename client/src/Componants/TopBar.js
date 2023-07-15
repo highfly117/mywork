@@ -135,7 +135,7 @@ export default function GoogleMaps({ data }) {
   }, [value, inputValue, fetch]);
 
   return (
-    <div className="navbarRE">
+    <div className="WeathernavbarRE">
       <nav className="navbar bg-light" style={{ "flexWrap": "nowrap" }}>
         <a className="navbar-brand" style={{ "marginLeft": "15px" }}>Weather API - {data.locationName + ", "} {data.locationCountry}  </a>
         <Autocomplete
