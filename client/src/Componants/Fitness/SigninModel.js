@@ -24,7 +24,7 @@ const SigninModel = ({ open, toggleModal, onSignUpClick }) => {
     try {
       console.log(userData)
       //const response = await axios.post('http://localhost:5000/api/v1/Signin', userData); // replace with your server URL
-      const response = await axios.get("https://express-api-git-master-highfly117.vercel.app/api/v1/Signin", userData);
+      const response = await axios.post("https://express-api-git-master-highfly117.vercel.app/api/v1/Signin", userData);
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
