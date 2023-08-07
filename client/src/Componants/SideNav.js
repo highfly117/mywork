@@ -56,10 +56,10 @@ const SideNav = ({props, changePanel}) => {
                     </a>
                     <span className="tooltips">FitnessQuest</span>
                 </li>
-                <li>
+                <li onClick={() => {changePanel("Sports")}}>
                     <a href="#">
                         <VscJson className="react-icons" />
-                        <span className="links_name">Show Code</span>
+                        <span className="links_name">Sports</span>
                     </a>
                     <span className="tooltips">JSON</span>
                 </li>

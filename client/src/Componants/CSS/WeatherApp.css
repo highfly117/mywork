@@ -77,13 +77,13 @@
     --bs-gutter-x: 0px;
 }
 
-.tg {
+.WeatherApp .tg {
     border-collapse: collapse;
     border-spacing: 0;
     margin-top: 10px;
 }
 
-.tg td {
+.WeatherApp .tg td {
     border-color: black;
     border-style: solid;
     border-width: 1px;
@@ -95,7 +95,7 @@
     text-align: center;
 }
 
-.tg th {
+.WeatherApp .tg th {
     border-color: black;
     border-style: solid;
     border-width: 1px;
@@ -107,7 +107,7 @@
     word-break: normal;
 }
 
-.tg .tg-0pky {
+.WeatherApp .tg .tg-0pky {
     border-color: inherit;
     text-align: left;
     vertical-align: top;

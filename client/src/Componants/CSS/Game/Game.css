@@ -241,13 +241,13 @@
     --bs-gutter-x: 0px;
 }
 
-.tg {
+.Game .tg {
     border-collapse: collapse;
     border-spacing: 0;
     margin-top: 10px;
 }
 
-.tg td {
+.Game .tg td {
     border-color: black;
     border-style: solid;
     border-width: 1px;
@@ -259,7 +259,7 @@
     text-align: center;
 }
 
-.tg th {
+.Game .tg th {
     border-color: black;
     border-style: solid;
     border-width: 1px;
@@ -271,7 +271,7 @@
     word-break: normal;
 }
 
-.tg .tg-0pky {
+.Game .tg .tg-0pky {
     border-color: inherit;
     text-align: left;
     vertical-align: top;

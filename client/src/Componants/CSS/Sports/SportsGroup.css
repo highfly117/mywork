@@ -1,0 +1,122 @@
+/* SportsGroup.css */
+
+/* Style the container for all the tables */
+.Groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+/* Style the individual tables */
+.Groups .tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  /* Add a fixed height to each table container */
+  height: auto;
+  overflow: hidden;
+ 
+}
+
+.Groups .datekickoff{
+  width: 115px !important;
+  text-align: left !important;
+}
+
+.Groups .tg th {
+  background-color: #f2f2f2;
+  border: 1px solid #dddddd;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+  width: 75px;
+}
+
+.Groups .tg .tg-0la1{
+  text-align: left ;
+  width: 135px ;
+}
+
+.Groups .opponent{
+  
+  width: 100px !important;
+}
+
+.Groups .tg td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: center;
+  width: 75px;
+}
+
+
+/* Style the table header and team name column */
+.tg-0pkt,
+.tg-0lax {
+  
+  font-weight: bold;
+  width: 75px;
+}
+
+
+
+/* Style the odd rows with a light background color */
+.tg tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Style the table header cells on smaller screens */
+@media screen and (max-width: 500px) {
+  .tg th {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+/* Style the table data cells on smaller screens */
+@media screen and (max-width: 500px) {
+  .tg td {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+
+.selected {
+  background-color: #f9f9f9;
+}
+
+
+
+/* Style the fixtures table */
+.tg-fixtures {
+   max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease; /* Add CSS transition for smooth sliding */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  
+}
+
+.tg-fixtures td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.tg-fixtures.show {
+  max-height: 1000px; /* Adjust this value to fit the actual content height */
+}
+
+.table-container h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: grey ;
+}
+
+.flag-icon {
+  width: 30px;    /* Or whatever size you prefer */
+  height: auto;   /* Keeps the aspect ratio */
+  margin-right: 5px;
+}

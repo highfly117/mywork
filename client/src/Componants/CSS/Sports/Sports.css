@@ -1,0 +1,86 @@
+.SportsPanel{
+    position: absolute;
+      height: 100%;
+      width: calc(100% - 78px);
+      top: 0px;
+      left: 78px;
+      transition: all 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: rgb(244, 246, 248);
+  
+  }
+
+  .sideNav.active~.Sports .SportsPanel {
+    width: calc(100% - 205px);
+    left: 205px
+}
+  
+  .infoPanel {
+    width: 100%;
+    display: Flex;
+    background-color: white;
+    position: relative;
+    top: 0px;
+    height: 100%;
+    opacity: 95%;
+    padding-top: 10px;
+    padding-left: 55px
+  }
+
+  .table {
+    
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .tableHeader {
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  .tableRow {
+    padding: 10px;
+    
+  }
+  
+
+  .row-1{
+    height: 8.33333333%;
+}
+.row-2{
+    height:16.66666667%;
+}
+.row-3{
+    height:25%;
+}
+.row-4{
+    height:33.33333333%;
+}
+.row-5{
+    height: 41.66666667%;
+}
+.row-6{
+    height:50%;
+}
+.row-7{
+    height:58.33333333%;
+}
+.row-8{
+    height:66.66666667%;
+}
+.row-9{
+    height:75%;
+}
+.row-10{
+    height:83.33333333%;
+}
+.row-11{
+    height:91.66666667%;
+}
+.row-12{
+    height:100%;
+}
