@@ -70,7 +70,8 @@ function Group() {
   useEffect(() => {
     const fetchGroupData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/matches');
+       // const response = await axios.get('http://localhost:5000/api/v1/matches');
+        const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches
         setGroupData(response.data.groups);
 
         // Fetch summary data for all teams
@@ -78,7 +79,8 @@ function Group() {
         for (const group in response.data.groups) {
           for (const team of response.data.groups[group]) {
             try {
-              const teamResponse = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+              //const teamResponse = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+              const teamResponse = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches/groups/${group}/${team}`);
               newTeamSummaryData[team] = calculateTeamSummary(teamResponse.data);
             } catch (error) {
               console.error(`Error fetching team ${team} fixtures:`, error);
@@ -131,7 +133,8 @@ function Group() {
       const group = findGroupByTeam(team);
       if (group) {
         try {
-          const response = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+          //const response = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+          const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches/groups/${group}/${team}`);
           setSelectedTeamFixtures(response.data);
           //console.log('Group:', group);
           //console.log('Team:', team);
