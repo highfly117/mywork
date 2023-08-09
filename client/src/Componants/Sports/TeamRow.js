@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-
-
-
-
 const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamFixtures }) => {
-
-    
 
     const teamToCountryCode = {
         'New Zealand': 'nz',

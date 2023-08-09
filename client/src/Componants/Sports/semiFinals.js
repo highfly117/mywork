@@ -32,7 +32,8 @@ const SemiFinals = () => {
     useEffect(() => {
         const fetchQuarterData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/v1/matches');
+                //const response = await axios.get('http://localhost:5000/api/v1/matches');
+                const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
                 setSemiFinalsData(response.data.matches.semi);
                 console.log(response.data);
             }
