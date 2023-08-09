@@ -1,0 +1,82 @@
+.Final {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+    gap: 20px;
+    margin-right: 55px;
+    height: 44vh;
+    
+    
+    padding-bottom: 40px;
+    
+    
+  }
+  
+  /* Style the individual tables */
+  .Final .tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    /* Add a fixed height to each table container */
+    height: auto;
+    overflow: hidden;
+    padding: 8px;
+  }
+  
+  .Final .datekickoff{
+    width: 115px !important;
+    text-align: left !important;
+  }
+  
+  .Final .tg th {
+    
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    width: 55px;
+  }
+  
+  .Final .tg .tg-0la1{
+    text-align: left ;
+    width: 135px ;
+  }
+  .tablewrapper{
+    padding: 0px !important;
+  }
+  
+  .Final .tg .tg-0pk1{
+    text-align: left ;
+    width: 135px ;
+  }
+
+  .Final .tg .tg-0pk3{
+   
+    width: 135px ;
+  }
+
+  .Final .tg .tg-0pk4{
+   background-color: white;
+   border-right: 2px dotted darkgray;
+    
+  }
+  .Final .tg .tg-0pk5{
+    background-color: white;
+    
+  }
+
+  
+  .Final .opponent{
+    
+    width: 100px !important;
+  }
+  
+  .Final .tg td {
+    
+    padding: 8px;
+    text-align: center;
+    width: 55px;
+  }

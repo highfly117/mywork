@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useRef } from 'react';
 import axios from 'axios';
 import TeamRow from './TeamRow';
 
@@ -17,6 +17,8 @@ const calculateTeamSummary = (fixtures) => {
     bonus: 0,
     pts: 0
   };
+
+
   fixtures.forEach(fixture => {
     summary.for += fixture.F;
     summary.against += fixture.A;
@@ -37,30 +39,9 @@ const calculateTeamSummary = (fixtures) => {
   return summary;
 };
 
-const teamToCountryCode = {
-  'New Zealand': 'nz',
-  'France': 'fr',
-  'Italy': 'it',
-  'Uruguay': 'uy',
-  'Namibia': 'na',
-  'South Africa': 'za',
-  'Ireland': 'ie',
-  'Scotland': 'gb-sct',
-  'Tonga': 'to',
-  'Romania': 'ro',
-  'Wales': 'gb-wls',
-  'Australia': 'au',
-  'Fiji': 'fj',
-  'Georgia': 'ge',
-  'Portugal': 'pt',
-  'England': 'gb-eng',
-  'Japan': 'jp',
-  'Argentina': 'ar',
-  'Samoa': 'ws',
-  'Chile': 'cl',
-};
 
-function Group() {
+const Group = () => {
+
   const [groupData, setGroupData] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedTeamFixtures, setSelectedTeamFixtures] = useState([]);
@@ -70,8 +51,8 @@ function Group() {
   useEffect(() => {
     const fetchGroupData = async () => {
       try {
-       // const response = await axios.get('http://localhost:5000/api/v1/matches');
-        const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches
+       //const response = await axios.get('http://localhost:5000/api/v1/matches');
+       const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
         setGroupData(response.data.groups);
 
         // Fetch summary data for all teams
@@ -119,12 +100,7 @@ function Group() {
     return null; // Return null if the team is not found in any group
   };
 
-
-
-
   const handleTeamClick = async (team) => {
-    
-
     if (selectedTeam === team) {
       setSelectedTeam(null);
       setSelectedTeamFixtures([]);
@@ -133,8 +109,8 @@ function Group() {
       const group = findGroupByTeam(team);
       if (group) {
         try {
-          //const response = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
-          const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches/groups/${group}/${team}`);
+          const response = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+          //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches/groups/${group}/${team}`);
           setSelectedTeamFixtures(response.data);
           //console.log('Group:', group);
           //console.log('Team:', team);
@@ -153,9 +129,8 @@ function Group() {
     }
   };
 
-
  return (
-    <div className='Groups'>
+    <div  className='Groups'>
       {Object.keys(groupData).map((group, index) => (
         <div key={index} className="table-container">
           <h2>Group {group}</h2>

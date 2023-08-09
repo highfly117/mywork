@@ -42,7 +42,7 @@
 
 
 
-.inputPanel {
+.FitnessQuest .inputPanel {
     width: 33%;
     background-color: rgb(240, 240, 245);
     border-right: 2px solid lightgray;
@@ -51,7 +51,7 @@
     height: calc(100% - 66px);
 }
 
-.infoPanel {
+.FitnessQuest .infoPanel {
     width: 67%;
     border-right: 2px solid lightgray;
     background-color: white;

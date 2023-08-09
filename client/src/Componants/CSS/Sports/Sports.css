@@ -17,19 +17,19 @@
     left: 205px
 }
   
-  .infoPanel {
+  .Sports .infoPanel {
     width: 100%;
     display: Flex;
     background-color: white;
     position: relative;
     top: 0px;
     height: 100%;
-    opacity: 95%;
     padding-top: 10px;
-    padding-left: 55px
+    padding-left: 55px;
+    
   }
 
-  .table {
+  .Sports .table {
     
     border-collapse: collapse;
     width: 100%;
@@ -37,12 +37,12 @@
     margin-bottom: 20px;
   }
   
-  .tableHeader {
+  .Sports .tableHeader {
     background-color: #f2f2f2;
     padding: 10px;
   }
   
-  .tableRow {
+  .Sports .tableRow {
     padding: 10px;
     
   }
@@ -84,3 +84,4 @@
 .row-12{
     height:100%;
 }
+

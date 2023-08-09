@@ -7,6 +7,12 @@ import { BiMenu } from "react-icons/bi";
 import { HiVariable } from "react-icons/hi";
 import { RiOrganizationChart } from "react-icons/ri";
 import { VscJson } from "react-icons/vsc";
+import rwcIcon from '../Assets/RWC2023_512x512.png'
+import weatherIcon from '../Assets/weather-forecast.png'
+import gameIcon from '../Assets/spaceship.png'
+import gymIcon from '../Assets/member-card.png'
+import { MdHeight } from "react-icons/md";
+import { height } from "@mui/system";
 
 
 const SideNav = ({props, changePanel}) => {
@@ -37,29 +43,29 @@ const SideNav = ({props, changePanel}) => {
                 {/* <Uploadbutton  ></Uploadbutton> */}
                 <li onClick={() => {changePanel("Weather"); collapse()}}>
                     <a href="#">
-                        <HiVariable  className="react-icons" />
-                        <span className="links_name">Weather and API</span>
+                    <img style={{height:"40px", width:"40px", marginLeft:"5px", marginRight:"7px"}} src={weatherIcon} alt="Weather Icon"  />
+                        <span className="links_name">Weather</span>
                     </a>
-                    <span className="tooltips">Weather and API</span>
+                    <span className="tooltips">Weather</span>
                 </li>
                 <li onClick={() => {changePanel("Game"); collapse()}}>
                     <a href="#">
-                        <FaCodeBranch className="react-icons" />
-                        <span className="links_name">Game</span>
+                    <img style={{height:"40px", width:"40px", marginLeft:"5px", marginRight:"7px"}} src={gameIcon} alt="Game Icon"  />
+                        <span className="links_name">Empire 2099</span>
                     </a>
                     <span className="tooltips">Empire 2099</span>
                 </li>
                 <li className="wrap-text" onClick={() => {changePanel("Fitness"); collapse()}}>
                     <a href="#">
-                        <RiOrganizationChart className="react-icons" />
+                    <img style={{height:"40px", width:"40px", marginLeft:"5px", marginRight:"7px"}} src={gymIcon} alt="Gym Icon"  />
                         <span className="links_name">FitnessQuest: Dungeon Edition</span>
                     </a>
                     <span className="tooltips">FitnessQuest</span>
                 </li>
-                <li onClick={() => {changePanel("Sports")}}>
+                <li style={{marginTop:"30px"}} onClick={() => {changePanel("Sports")}}>
                     <a href="#">
-                        <VscJson className="react-icons" />
-                        <span className="links_name">Sports</span>
+                    <img style={{height:"50px"}} src={rwcIcon} alt="RWC Icon" className="react-icons" />
+                        <span className="links_name">RWC 2023</span>
                     </a>
                     <span className="tooltips">JSON</span>
                 </li>

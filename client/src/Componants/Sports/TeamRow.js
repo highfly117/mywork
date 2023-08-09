@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamFixtures }) => {
 
-    console.log(selectedTeamFixtures)
+    
 
     const teamToCountryCode = {
         'New Zealand': 'nz',
@@ -93,7 +93,7 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
           </tr>
           {isSelected && selectedTeamFixtures.length > 0 && (
             <tr>
-              <td colSpan="9">
+              <td className='tablewrapper' colSpan="9">
                 <table className="tg-fixtures">
                   <thead>
                     <tr>
@@ -110,14 +110,18 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
                   <tbody>
                     {selectedTeamFixtures.map((fixture, idx) => (
                       <tr key={idx}>
-                        <td className="tg-0lax">{formatDate(fixture.date)}</td>
-                        <td className="tg-0lax">{getTimeFromDateStr(fixture.date)}</td>
-                        <td className="tg-0lax">{fixture.team}</td>
-                        <td className="tg-0lax">{fixture.for}</td>
-                        <td className="tg-0lax">{fixture.against}</td>
-                        <td className="tg-0lax">{fixture.diff}</td>
+                        <td className="tg-0la1">{formatDate(fixture.dataTime)}</td>
+                        <td className="tg-0lax">{getTimeFromDateStr(fixture.dataTime)}</td>
+                        <td className="tg-0la3"><img
+                src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[fixture.opponent]}.png`}
+                alt={`${fixture.opponent} flag`}
+                className="flag-icon" // Optional: add a class for styling
+              />{fixture.opponent}</td>
+                        <td className="tg-0lax">{fixture.F}</td>
+                        <td className="tg-0lax">{fixture.A}</td>
+                        <td className="tg-0lax">{(fixture.F) - (fixture.A)}</td>
                         <td className="tg-0lax">{fixture.bonus}</td>
-                        <td className="tg-0lax">{fixture.result}</td>
+                        <td className="tg-0lax">{fixture.F > fixture.A ? 'Win' : fixture.F < fixture.A ? 'Loss' : 'Draw'}</td>
                       </tr>
                     ))}
                   </tbody>
