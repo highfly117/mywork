@@ -7,7 +7,7 @@ const MatchesTable = () => {
 
     const [allMatches, setallMatches] = useState(null);
     const [userInteracted, setUserInteracted] = useState(false);
-    const [showTable, setShowTable] = useState(true); // initially hidden
+    const [showTable, setShowTable] = useState(false); // initially hidden
 
     const teamToCountryCode = {
         'New Zealand': 'nz',
