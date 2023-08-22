@@ -19,7 +19,7 @@ const Portfolio = () => {
                <div className="bodybit"> 
                <h3>Software Developer</h3>
                <h2 className='tagdescription'>Building React/Node/Express applications for the web</h2>
-               <p className='words'>This site demos what can be done using REST API, database connection, and React frontend fuctionality please click some of the icons on the left</p>
+               <p className='words'>This site demos what can be done using REST API, database connections, React frontend fuctionality and Node.js API building. Please click some of the icons on the left</p>
                </div>
             </div>
 
