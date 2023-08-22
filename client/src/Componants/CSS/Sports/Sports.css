@@ -1,87 +1,241 @@
-.SportsPanel{
-    position: absolute;
-      height: 100%;
-      width: calc(100% - 78px);
-      top: 0px;
-      left: 78px;
-      transition: all 0.5s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: rgb(244, 246, 248);
-  
-  }
-
-  .sideNav.active~.Sports .SportsPanel {
-    width: calc(100% - 205px);
-    left: 205px
-}
-  
-  .Sports .infoPanel {
-    width: 100%;
-    display: Flex;
-    background-color: white;
-    position: relative;
-    top: 0px;
-    height: 100%;
-    padding-top: 10px;
-    padding-left: 55px;
-    
-  }
-
-  .Sports .table {
-    
-    border-collapse: collapse;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  
-  .Sports .tableHeader {
-    background-color: #f2f2f2;
-    padding: 10px;
-  }
-  
-  .Sports .tableRow {
-    padding: 10px;
-    
-  }
-  
-
-  .row-1{
-    height: 8.33333333%;
-}
-.row-2{
-    height:16.66666667%;
-}
-.row-3{
-    height:25%;
-}
-.row-4{
-    height:33.33333333%;
-}
-.row-5{
-    height: 41.66666667%;
-}
-.row-6{
-    height:50%;
-}
-.row-7{
-    height:58.33333333%;
-}
-.row-8{
-    height:66.66666667%;
-}
-.row-9{
-    height:75%;
-}
-.row-10{
-    height:83.33333333%;
-}
-.row-11{
-    height:91.66666667%;
-}
-.row-12{
-    height:100%;
+.SportsPanel {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 78px);
+  top: 0px;
+  left: 78px;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(244, 246, 248);
+  overflow: hidden;
+  height: 100%;
 }
 
+.SportsPanel .Teams {
+  display: flex;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-between;
+  padding-Top: 10px;
+}
+
+
+
+.matches-table-container tr {
+  padding: 2px 10px 4px 0px;
+  border-bottom: 1px solid lightgray;
+  padding-left: 10px;
+}
+
+.matches-table-container td {
+  padding: 2px 10px 4px 0px;
+  border-bottom: 1px solid lightgray;
+  padding-left: 10px;
+}
+
+
+.matches-table-container 
+table {
+  background-color: white;
+  box-shadow: -5px 0px 5px -2px rgba(0, 0, 0, 0.5);
+}
+
+.SportsPanel .dateandTime {
+  padding: 3px;
+  font-weight: 300;
+  color: darkgray;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.SportsPanel .MatchTicker {
+  height: 110px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+
+}
+
+.matches-table-container {
+  transition: transform 0.5s ease;
+  transform: translateX(0); /* Initially, the table is visible */
+  top: 0px;
+  position: absolute;
+  right: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 13px;
+  overflow: auto;
+  height: calc(100% - 96px );
+  padding-left:60px
+}
+
+.matches-table-container.hide {
+  transform: translateX(88%);
+
+}
+
+.tab {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);  /* To make the text start from top */
+  background-color: #333333;
+  color: #fff;
+  padding: 10px 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 20px;  /* Adjust this value if needed to position the tab just outside the table */
+  transform: translateY(-50%);  /* Center the tab vertically */
+  z-index: 2;  /* Keep the tab on top */
+  transition: background-color 0.3s;
+}
+
+.tab:hover {
+  background-color: #555;
+}
+
+
+.SportsPanel .fixtureWrapper {
+
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  min-width: 200px;
+}
+
+.teamScore {
+  display: flex;
+}
+
+.editbutton {
+  display: none;
+}
+
+.scrollable-container {
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.left-arrow {
+  left: 0;
+  height: 96px;
+  width: 34px;
+  font-size: 34px;
+  top: 48px;
+}
+
+.right-arrow {
+  right: 0;
+  height: 96px;
+  width: 34px;
+  font-size: 34px;
+  top: 48px;
+}
+
+.sideNav.active~.Sports .SportsPanel {
+  width: calc(100% - 205px);
+  left: 205px
+}
+
+.Sports .infoPanel {
+  width: 100%;
+  display: Flex;
+  background-color: white;
+  position: relative;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 20px;
+  top: 96px;
+
+}
+
+.Sports .table {
+
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.Sports .tableHeader {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.Sports .tableRow {
+  padding: 10px;
+
+}
+
+
+.row-1 {
+  height: 8.33333333%;
+}
+
+.row-2 {
+  height: 16.66666667%;
+}
+
+.row-3 {
+  height: 25%;
+}
+
+.row-4 {
+  height: 33.33333333%;
+}
+
+.row-5 {
+  height: 41.66666667%;
+}
+
+.row-6 {
+  height: 50%;
+}
+
+.row-7 {
+  height: 58.33333333%;
+}
+
+.row-8 {
+  height: 66.66666667%;
+}
+
+.row-9 {
+  height: 75%;
+}
+
+.row-10 {
+  height: 83.33333333%;
+}
+
+.row-11 {
+  height: 91.66666667%;
+}
+
+.row-12 {
+  height: 100%;
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {FiEdit2} from 'react-icons/fi'
 
 import "../CSS/Sports/Finals.css"
 const Finals = () => {
@@ -32,8 +33,8 @@ const Finals = () => {
     useEffect(() => {
         const fetchQuarterData = async () => {
             try {
-                //const response = await axios.get('http://localhost:5000/api/v1/matches');
-                const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_MATCHDATA}`);
+                //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
                 setFinalsData(response.data.matches.final);
                 console.log(response.data);
             }
@@ -44,6 +45,28 @@ const Finals = () => {
 
         fetchQuarterData();
     }, []);
+
+    const editPoints = (matchKey, teamKey, currentPoints) => {
+        const newPoints = prompt(`Edit points for ${teamKey}`, currentPoints);
+        if (newPoints) {
+            const updatedData = { updateLocation: 'final', ...FinalsData, [matchKey]: { ...FinalsData[matchKey], [teamKey]: newPoints } };
+            setFinalsData(updatedData); // Update the local state
+    
+            // Send updated data to the server
+            axios.put('http://localhost:5000/api/v1/matches/write', updatedData);
+        }
+    };
+
+    const hidebuttons = (className) => {
+        const elements = document.querySelectorAll(`.${className}`);
+        elements.forEach(element => {
+            if (element.style.display === 'none' || !element.style.display) {
+                element.style.display = 'inline-block'; // or 'block' depending on your design needs
+            } else {
+                element.style.display = 'none';
+            }
+        });
+    }
 
     const getOrdinalSuffix = (day) => {
         if (day === 1 || day === 21 || day === 31) {
@@ -99,20 +122,33 @@ const Finals = () => {
 
     return (
         <div className="Final">
+            
             <h2 className='stageName'>Finals</h2>
+            
             {FinalsData && Object.entries(FinalsData).map(([key, value], idx) => {
                 const { team1Name, team2Name, team1, team2 } = getMatchDetails(value);
     
                 return (
+                    <div>
+                         <button onClick={() => hidebuttons('editbutton')}  style={{marginLeft:"3px", marginBottom:"3px"}} ><FiEdit2 /></button>
                     <table key={idx} className="tg table-container">
                         <thead>
                             <tr>
                                 <th className="tg-0pkt">Date</th>
                                 <th className="tg-0pkt">KO</th>
-                                <th className="tg-0pkt">{team1Name}</th>
-                                <th className="tg-0pkt"></th>
-                                <th className="tg-0pkt"></th>
-                                <th className="tg-0lax">{team2Name}</th>
+                                <th className="tg-0pkt">{team1Name}
+                                <button className='editbutton' style={{marginLeft:"3px"}} onClick={() => editPoints(key, 'WinnerS1', value.WinnerS1)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0pkt">
+                                
+                    <button className='editbutton' onClick={() => editPoints(key, 'pts1', value.pts1)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0pkt">
+                                
+                    <button className='editbutton' onClick={() => editPoints(key, 'pts2', value.pts2)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0lax">{team2Name} 
+                                <button className='editbutton' style={{marginLeft:"3px"}} onClick={() => editPoints(key, 'WinnerS2', value.WinnerS2)}><FiEdit2 /></button></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -120,24 +156,33 @@ const Finals = () => {
                                 <td className="tg-0pk1">{formatDate(value.dataTime)}</td>
                                 <td className="tg-0pkt">{getTimeFromDateStr(value.dataTime)}</td>
                                 <td className="tg-0pk3">
-                                    <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team1]}.png`}
-                                         alt={`${team1} flag`}
-                                         className="flag-icon" 
-                                    /> 
+                                {
+                                            team1 ?
+                                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team1]}.png`}
+                                                    alt={`${team2}`}
+                                                    className="flag-icon"
+                                                />
+                                                : team1Name
+                                        }
                                     {team1}
                                 </td>
                                 <td className="tg-0pk4">{value.pts1}</td>
                                 <td className="tg-0pk5">{value.pts2}</td>
                                 <td className="tg-0pk3">
-                                    <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team2]}.png`}
-                                         alt={`${team2} flag`}
-                                         className="flag-icon"
-                                    /> 
+                                {
+                                            team2 ?
+                                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team2]}.png`}
+                                                    alt={`${team2}`}
+                                                    className="flag-icon"
+                                                />
+                                                : team2Name
+                                        }
                                     {team2}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    </div>
                 );
             })}
         </div>

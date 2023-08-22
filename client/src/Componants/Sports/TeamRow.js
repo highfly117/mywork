@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {FcExpand} from 'react-icons/fc'
 
 const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamFixtures }) => {
 
@@ -60,12 +61,15 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
         <React.Fragment>
           <tr onClick={() => onTeamClick(team)}>
             <td className={`tg-0la1 ${isSelected ? 'selected' : ''}`}>
+              <div>
               <img
                 src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team]}.png`}
                 alt={`${team} flag`}
                 className="flag-icon" // Optional: add a class for styling
               />
               {team}
+              </div>
+              <FcExpand></FcExpand>
             </td>
             {teamSummaryData ? (
               <>
@@ -106,11 +110,10 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
                       <tr key={idx}>
                         <td className="tg-0la1">{formatDate(fixture.dataTime)}</td>
                         <td className="tg-0lax">{getTimeFromDateStr(fixture.dataTime)}</td>
-                        <td className="tg-0la3"><img
-                src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[fixture.opponent]}.png`}
-                alt={`${fixture.opponent} flag`}
-                className="flag-icon" // Optional: add a class for styling
-              />{fixture.opponent}</td>
+                        <td className="tg-0la3">
+                          <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[fixture.opponent]}.png`} className="flag-icon" />
+                          {fixture.opponent}
+                        </td>
                         <td className="tg-0lax">{fixture.F}</td>
                         <td className="tg-0lax">{fixture.A}</td>
                         <td className="tg-0lax">{(fixture.F) - (fixture.A)}</td>

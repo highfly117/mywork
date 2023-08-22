@@ -5,10 +5,12 @@
 .Groups {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   margin-right: 25px;
   position: relative;
-  
+  overflow-y: auto;
+  height: calc(100% - 113px);
+  min-width: 680px;
 }
 
 /* Style the individual tables */
@@ -20,7 +22,7 @@
   /* Add a fixed height to each table container */
   height: auto;
   overflow: hidden;
-  min-width: 615px;
+  min-width: 655px;
  
 }
 
@@ -41,13 +43,13 @@
 .Groups .tg .tg-0la1{
   font-weight: bold;
   text-align: left ;
-  min-width: 135px;
+  min-width: 160px;
 }
 
 .Groups .tg .tg-0la3{
   font-weight: bold;
   text-align: left ;
-  min-width: 135px;
+  min-width: 140px;
 }
 
 .Groups .tg .tg-0pk1{
@@ -62,7 +64,7 @@
 
 .Groups .tg td {
   border: 2px solid white;
-  padding: 8px;
+  padding: 4px;
   text-align: center;
   min-width: 55px;
 }
@@ -152,6 +154,8 @@
   background-color: white;
   transition: background-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Groups .tg .tg-0la1:hover{

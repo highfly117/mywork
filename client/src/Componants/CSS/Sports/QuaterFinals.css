@@ -1,4 +1,4 @@
-.Quaters {
+.Quarter {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,7 +15,7 @@
   }
   
   /* Style the individual tables */
-  .Quaters .tg {
+  .Quarter .tg {
     border-collapse: collapse;
     border-spacing: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,12 +26,12 @@
     padding: 8px;
   }
   
-  .Quaters .datekickoff{
+  .Quarter .datekickoff{
     width: 115px !important;
     text-align: left !important;
   }
   
-  .Quaters .tg th {
+  .Quarter .tg th {
     
     border-bottom: 1px solid lightgray;
     font-weight: bold;
@@ -40,7 +40,7 @@
     width: 55px;
   }
   
-  .Quaters .tg .tg-0la1{
+  .Quarter .tg .tg-0la1{
     text-align: left ;
     width: 135px ;
   }
@@ -48,33 +48,33 @@
     padding: 0px !important;
   }
   
-  .Quaters .tg .tg-0pk1{
+  .Quarter .tg .tg-0pk1{
     text-align: left ;
     width: 135px ;
   }
 
-  .Quaters .tg .tg-0pk3{
+  .Quarter .tg .tg-0pk3{
    
     width: 135px ;
   }
 
-  .Quaters .tg .tg-0pk4{
+  .Quarter .tg .tg-0pk4{
    background-color: white;
    border-right: 2px dotted darkgray;
     
   }
-  .Quaters .tg .tg-0pk5{
+  .Quarter .tg .tg-0pk5{
     background-color: white;
     
   }
 
   
-  .Quaters .opponent{
+  .Quarter .opponent{
     
     width: 100px !important;
   }
   
-  .Quaters .tg td {
+  .Quarter .tg td {
     
     padding: 8px;
     text-align: center;

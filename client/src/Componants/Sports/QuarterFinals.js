@@ -1,5 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
+import {FiEdit2} from 'react-icons/fi'
 
 import "../CSS/Sports/QuaterFinals.css"
 
@@ -34,9 +35,9 @@ const QuarterFinals = () => {
     useEffect(() => {
         const fetchQuarterData = async () => {
             try {
-                //const response = await axios.get('http://localhost:5000/api/v1/matches');
-                const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
-                setQuarterData(response.data.matches.Quaters);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL_MATCHDATA}`);
+                //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
+                setQuarterData(response.data.matches.quarter);
                 console.log(response.data);
             }
             catch (error) {
@@ -46,6 +47,29 @@ const QuarterFinals = () => {
 
         fetchQuarterData();
     }, []);
+
+    const editPoints = (matchKey, teamKey, currentPoints) => {
+        const newPoints = prompt(`Edit points for ${teamKey}`, currentPoints);
+        if (newPoints) {
+            const updatedMatchData = { ...quarterFinalsData[matchKey], [teamKey]: newPoints };
+            const updatedData = { updateLocation: 'quarter ', [matchKey]: updatedMatchData };
+            setQuarterData(prevData => ({ ...prevData, [matchKey]: updatedMatchData }));
+    
+            // Send updated data to the server
+            axios.put('http://localhost:5000/api/v1/matches/write', updatedData);
+        }
+    };
+
+    const hidebuttons = (className) => {
+        const elements = document.querySelectorAll(`.${className}`);
+        elements.forEach(element => {
+            if (element.style.display === 'none' || !element.style.display) {
+                element.style.display = 'inline-block'; // or 'block' depending on your design needs
+            } else {
+                element.style.display = 'none';
+            }
+        });
+    }
 
     const getOrdinalSuffix = (day) => {
         if (day === 1 || day === 21 || day === 31) {
@@ -98,46 +122,66 @@ const QuarterFinals = () => {
     }
 
     return (
-        <div className="Quaters">
-            <h2 className='stageName'>Quater Finals</h2>
+        <div className="Quarter">
+            <h2 className='stageName'>Quarter Finals</h2>
             {quarterFinalsData && Object.entries(quarterFinalsData).map(([key, value], idx) => {
                 const { winnerName, runnerName, winner, runner } = getMatchDetails(value);
 
                 return (
+                    <div>
+                         <button onClick={() => hidebuttons('editbutton')}  style={{marginLeft:"3px", marginBottom:"3px"}} ><FiEdit2 /></button>
                     <table key={idx} className="tg table-container">
                         <thead>
                             <tr>
                                 <th className="tg-0pkt">Date</th>
                                 <th className="tg-0pkt">KO</th>
-                                <th className="tg-0pkt">{winnerName}</th>
-                                <th className="tg-0pkt"></th>
-                                <th className="tg-0pkt"></th>
-                                <th className="tg-0lax">{runnerName}</th>
+                                <th className="tg-0pkt">{winnerName}
+                                <button className='editbutton' onClick={() => editPoints(key, 'pts1', winner)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0pkt">
+                                <button className='editbutton' onClick={() => editPoints(key, 'pts1', value.pts1)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0pkt">
+                                <button className='editbutton' onClick={() => editPoints(key, 'pts2', value.pts2)}><FiEdit2 /></button>
+                                </th>
+                                <th className="tg-0lax">{runnerName}
+                                <button className='editbutton' onClick={() => editPoints(key, 'runner', runner)}><FiEdit2 /></button></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td className="tg-0pk1">{formatDate(value.dataTime)}</td>
                                 <td className="tg-0pkt">{getTimeFromDateStr(value.dataTime)}</td>
-                                <td className="tg-0pk3"> <img
-                                    src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[winner]}.png`}
-                                    alt={`${winner} flag`}
-                                    className="flag-icon" // Optional: add a class for styling
-                                /> 
+                                <td className="tg-0pk3"> 
+                                {
+                                            winner ?
+                                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[winner]}.png`}
+                                                    alt={`${winner}`}
+                                                    className="flag-icon"
+                                                />
+                                                : winnerName
+                                        }
+                                
                                 {winner}
                                 </td>
                                 <td className="tg-0pk4">{value.pts1}</td>
                                 <td className="tg-0pk5">{value.pts2}</td>
-                                <td className="tg-0pk3"><img
-                                    src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[runner]}.png`}
-                                    alt={`${runner} flag`}
-                                    className="flag-icon" // Optional: add a class for styling
-                                /> 
+                                <td className="tg-0pk3">
+                                    {
+                                            runner ?
+                                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[runner]}.png`}
+                                                    alt={`${runner}`}
+                                                    className="flag-icon"
+                                                />
+                                                : runnerName
+                                        }
+                                
                                 {runner}
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    </div>
                 );
             })}
         </div>
