@@ -4,7 +4,7 @@ import WeatherApp from "./Componants/WeatherApp";
 import Game from "./Componants/Game/Game";
 import FitnessQuest from "./Componants/Fitness/FitnessGame";
 import Sports from "./Componants/Sports/Sports";
-
+import Portfolio from "./Componants/portfolio";
 
 import './App.css';
 
@@ -14,6 +14,7 @@ import './App.css';
 
 function App() {
   const [panelLoad, SetPanelLoad] = useState(null)
+  
 
 
   const changePanel = (panel) => {
@@ -31,7 +32,7 @@ function App() {
       <SideNav panelLoad={panelLoad} changePanel={changePanel}></SideNav>
       {(() => {
         switch (panelLoad) {
-          case null: return <div>Welcome to my site</div>;
+          case null: return <Portfolio />;
           case 'Weather': return <WeatherApp />;
           case 'Game' : return <Game/>
           case 'Fitness' : return <FitnessQuest/>
