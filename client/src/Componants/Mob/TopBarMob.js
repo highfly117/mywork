@@ -14,8 +14,8 @@ import { BiMenu } from "react-icons/bi";
 
 
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyAJiDxL5x2vUHgH77_f6WOyAIVRacWUWFI';
-const GOOGLE_GEOCODING_API_KEY = "AIzaSyDHTJQYNpmNtUB5wR8tsDll9-XW1VmOcwY";
+const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_API_URL_GOOGLE_MAPS_API_KEY;
+const GOOGLE_GEOCODING_API_KEY = process.env.REACT_APP_API_URL_GOOGLE_GEOCODING_API_KEY;
 
 function loadScript(src, position, id) {
   if (!position) {

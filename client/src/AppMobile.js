@@ -53,7 +53,7 @@ function AppMobile() {
 
         try {
           // Replace 'your_api_key' with your actual API key
-          const response = await axios.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAFEPBEgSJFCqgaJsZH6HeyfKdd9IJ-MIc');
+          const response = await axios.post(`${process.env.REACT_APP_API_URL_GOOGLEAPI}`);
           const data = response.data;
           setLocation({ latitude: data.location.lat, longitude: data.location.lng });
           loadData(data.location.lat, data.location.lng);
