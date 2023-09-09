@@ -109,7 +109,7 @@ const Group = () => {
       const group = findGroupByTeam(team);
       if (group) {
         try {
-          const response = await axios.get(`http://localhost:5000/api/v1/matches/groups/${group}/${team}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL_GROUP_TEAM}/${group}/${team}`);
           //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches/groups/${group}/${team}`);
           setSelectedTeamFixtures(response.data);
           //console.log('Group:', group);
