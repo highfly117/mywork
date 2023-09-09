@@ -66,7 +66,7 @@ table {
 .matches-table-container {
   transition: transform 0.5s ease;
   transform: translateX(0); /* Initially, the table is visible */
-  top: 0px;
+  top: 96px;
   position: absolute;
   right: 0;
   padding-left: 10px;

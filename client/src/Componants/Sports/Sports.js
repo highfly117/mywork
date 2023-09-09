@@ -24,16 +24,12 @@ const Sports = () => {
 
           <QuarterFinals />
 
-
           <SemiFinals />
 
           <Finals />
 
-          <MatchesTable />
-
-
-
         </div>
+        <MatchesTable />
       </div>
     </div>
   );
