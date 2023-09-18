@@ -1,6 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
-import {FiEdit2} from 'react-icons/fi'
+import { FiEdit2 } from 'react-icons/fi'
 
 import "../CSS/Sports/QuaterFinals.css"
 
@@ -32,6 +32,16 @@ const QuarterFinals = () => {
         'Chile': 'cl',
     };
 
+    const pastelColors = [
+        '#4363d8', '#911eb4',    // sky blue
+        '#f58231', '#aaffc3',    // soft pink
+        '#E0F9B5', '#FFDAB9',    // thistle
+        '#A0CBE8', '#D8BFD8'     // peach puff
+    ];
+
+   
+
+
     useEffect(() => {
         const fetchQuarterData = async () => {
             try {
@@ -54,7 +64,7 @@ const QuarterFinals = () => {
             const updatedMatchData = { ...quarterFinalsData[matchKey], [teamKey]: newPoints };
             const updatedData = { updateLocation: 'quarter ', [matchKey]: updatedMatchData };
             setQuarterData(prevData => ({ ...prevData, [matchKey]: updatedMatchData }));
-    
+
             // Send updated data to the server
             axios.put('http://localhost:5000/api/v1/matches/write', updatedData);
         }
@@ -129,31 +139,31 @@ const QuarterFinals = () => {
 
                 return (
                     <div>
-                         <button onClick={() => hidebuttons('editbutton')}  style={{marginLeft:"3px", marginBottom:"3px"}} ><FiEdit2 /></button>
-                    <table key={idx} className="tg table-container">
-                        <thead>
-                            <tr>
-                                <th className="tg-0pkt">Date</th>
-                                <th className="tg-0pkt">KO</th>
-                                <th className="tg-0pkt">{winnerName}
-                                <button className='editbutton' onClick={() => editPoints(key, 'pts1', winner)}><FiEdit2 /></button>
-                                </th>
-                                <th className="tg-0pkt">
-                                <button className='editbutton' onClick={() => editPoints(key, 'pts1', value.pts1)}><FiEdit2 /></button>
-                                </th>
-                                <th className="tg-0pkt">
-                                <button className='editbutton' onClick={() => editPoints(key, 'pts2', value.pts2)}><FiEdit2 /></button>
-                                </th>
-                                <th className="tg-0lax">{runnerName}
-                                <button className='editbutton' onClick={() => editPoints(key, 'runner', runner)}><FiEdit2 /></button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="tg-0pk1">{formatDate(value.dataTime)}</td>
-                                <td className="tg-0pkt">{getTimeFromDateStr(value.dataTime)}</td>
-                                <td className="tg-0pk3"> 
-                                {
+                        <button onClick={() => hidebuttons('editbutton')} style={{ marginLeft: "3px", marginBottom: "3px" }} ><FiEdit2 /></button>
+                        <table key={idx} className="tg table-container">
+                            <thead>
+                                <tr>
+                                    <th className="tg-0pkt">Date</th>
+                                    <th className="tg-0pkt">KO</th>
+                                    <th className="tg-0pkt">{winnerName}
+                                        <button className='editbutton' onClick={() => editPoints(key, 'winner', winner)}><FiEdit2 /></button>
+                                    </th>
+                                    <th className="tg-0pkt">
+                                        <button className='editbutton' onClick={() => editPoints(key, 'pts1', value.pts1)}><FiEdit2 /></button>
+                                    </th>
+                                    <th className="tg-0pkt">
+                                        <button className='editbutton' onClick={() => editPoints(key, 'pts2', value.pts2)}><FiEdit2 /></button>
+                                    </th>
+                                    <th className="tg-0lax">{runnerName}
+                                        <button className='editbutton' onClick={() => editPoints(key, 'runner', runner)}><FiEdit2 /></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="tg-0pk1">{formatDate(value.dataTime)}</td>
+                                    <td className="tg-0pkt">{getTimeFromDateStr(value.dataTime)}</td>
+                                    <td className="tg-0pk3" style={{ backgroundColor: pastelColors[idx * 2] }}>
+                                        {
                                             winner ?
                                                 <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[winner]}.png`}
                                                     alt={`${winner}`}
@@ -161,13 +171,12 @@ const QuarterFinals = () => {
                                                 />
                                                 : winnerName
                                         }
-                                
-                                {winner}
-                                </td>
-                                <td className="tg-0pk4">{value.pts1}</td>
-                                <td className="tg-0pk5">{value.pts2}</td>
-                                <td className="tg-0pk3">
-                                    {
+                                        {winner}
+                                    </td>
+                                    <td className="tg-0pk4">{value.pts1}</td>
+                                    <td className="tg-0pk5">{value.pts2}</td>
+                                    <td className="tg-0pk3" style={{ backgroundColor: pastelColors[(idx * 2) + 1] }}>
+                                        {
                                             runner ?
                                                 <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[runner]}.png`}
                                                     alt={`${runner}`}
@@ -175,12 +184,11 @@ const QuarterFinals = () => {
                                                 />
                                                 : runnerName
                                         }
-                                
-                                {runner}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                        {runner}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 );
             })}

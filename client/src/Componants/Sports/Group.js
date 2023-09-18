@@ -8,6 +8,7 @@ import '../CSS/Sports/SportsGroup.css';
 
 const calculateTeamSummary = (fixtures) => {
   let summary = {
+    played:0,
     win: 0,
     draw: 0,
     loss: 0,
@@ -20,20 +21,30 @@ const calculateTeamSummary = (fixtures) => {
 
 
   fixtures.forEach(fixture => {
-    summary.for += fixture.F;
-    summary.against += fixture.A;
-    summary.ptsDiff += fixture.F - fixture.A;
-    summary.bonus += fixture.bonus;
-    if (fixture.F > fixture.A) {
-      summary.win++;
-      summary.pts += 4;
-    } else if (fixture.F < fixture.A) {
-      summary.loss++;
-    } else {
-      summary.draw++;
-      summary.pts += 2;
+
+    if (fixture.F !== "" && fixture.A !== "") {
+      summary.played++
+      summary.for += fixture.F;
+      summary.against += fixture.A;
+      summary.ptsDiff += fixture.F - fixture.A;
+      summary.bonus += fixture.bonus;
+
+
+      if (fixture.F > fixture.A) {
+        summary.win++;
+        summary.pts += 4;
+      } else if (fixture.F < fixture.A) {
+        summary.loss++;
+      } else if (fixture.F === fixture.A) {
+        summary.draw++;
+        summary.pts += 2;
+      }
+      summary.pts += summary.bonus
+
     }
-    summary.pts += summary.bonus
+
+
+
   });
   //console.log(summary)
   return summary;
@@ -48,11 +59,13 @@ const Group = () => {
   const [teamSummaryData, setTeamSummaryData] = useState({});
 
 
+
+
   useEffect(() => {
     const fetchGroupData = async () => {
       try {
-       const response = await axios.get(`${process.env.REACT_APP_API_URL_MATCHDATA}`);
-       //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
+        const response = await axios.get(`${process.env.REACT_APP_API_URL_MATCHDATA}`);
+        //const response = await axios.get(`https://express-api-git-master-highfly117.vercel.app/api/v1/matches`)
         setGroupData(response.data.groups);
 
         // Fetch summary data for all teams
@@ -71,6 +84,9 @@ const Group = () => {
 
         // Update the state
         setTeamSummaryData(newTeamSummaryData);
+
+
+
 
       } catch (error) {
         console.error('Error fetching group data:', error);
@@ -129,8 +145,8 @@ const Group = () => {
     }
   };
 
- return (
-    <div  className='Groups'>
+  return (
+    <div className='Groups'>
       {Object.keys(groupData).map((group, index) => (
         <div key={index} className="table-container">
           <h2>Group {group}</h2>
@@ -138,6 +154,7 @@ const Group = () => {
             <thead>
               <tr>
                 <th className="tg-0pkt">Team</th>
+                <th className="tg-0pkt">Played</th>
                 <th className="tg-0pkt">Win</th>
                 <th className="tg-lboi">Draw</th>
                 <th className="tg-0lax">Loss</th>
@@ -149,14 +166,34 @@ const Group = () => {
               </tr>
             </thead>
             <tbody>
-              {groupData[group].map((team, idx) => (
-                <TeamRow 
-                  key={idx} 
-                  team={team} 
-                  isSelected={selectedTeam === team} 
-                  onTeamClick={handleTeamClick} 
-                  teamSummaryData={teamSummaryData[team]} 
-                  selectedTeamFixtures={selectedTeam === team ? selectedTeamFixtures : []} 
+              {groupData[group].sort((teamA, teamB) => {
+                const summaryA = teamSummaryData[teamA] || { pts: 0, ptsDiff: 0 };
+                const summaryB = teamSummaryData[teamB] || { pts: 0, ptsDiff: 0 };
+
+                // Log teams that have missing data
+                if (!teamSummaryData[teamA]) {
+                  console.warn(`Missing data for team: ${teamA}`);
+                }
+                if (!teamSummaryData[teamB]) {
+                  console.warn(`Missing data for team: ${teamB}`);
+                }
+
+                if (summaryA.pts === summaryB.pts) {
+                  return summaryB.ptsDiff - summaryA.ptsDiff;
+                }
+
+                return summaryB.pts - summaryA.pts;
+
+              }).map((team, idx) => (
+                <TeamRow
+                  key={idx}
+                  team={team}
+                  tableIndex={index}   
+                  rowIndex={idx}
+                  isSelected={selectedTeam === team}
+                  onTeamClick={handleTeamClick}
+                  teamSummaryData={teamSummaryData[team]}
+                  selectedTeamFixtures={selectedTeam === team ? selectedTeamFixtures : []}
                 />
               ))}
             </tbody>

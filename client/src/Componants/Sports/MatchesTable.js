@@ -8,6 +8,9 @@ const MatchesTable = () => {
     const [allMatches, setallMatches] = useState(null);
     const [userInteracted, setUserInteracted] = useState(false);
     const [showTable, setShowTable] = useState(false); // initially hidden
+    const [nextGameIndex, setNextGameIndex] = useState(null);
+    const [currentGameIndex, setCurrentGameIndex] = useState(null);
+
 
     const teamToCountryCode = {
         'New Zealand': 'nz',
@@ -61,6 +64,17 @@ const MatchesTable = () => {
                 // Sort the matches by datetime
                 matches.sort((a, b) => new Date(a.dataTime).getTime() - new Date(b.dataTime).getTime());
 
+                const currentTime = Date.now();
+                const currentIndex = matches.findIndex(match => new Date(match.dataTime).getTime() > currentTime);
+                const currentGameIndex = matches.findIndex(match => {
+                    const startTime = new Date(match.dataTime).getTime();
+                    const endTime = startTime + (2.5 * 60 * 60 * 1000); // 2.5 hours in milliseconds
+                    return currentTime >= startTime && currentTime <= endTime;
+                });
+
+                setNextGameIndex(currentIndex);
+                setCurrentGameIndex(currentGameIndex);
+
                 setallMatches(matches);
 
             } catch (error) {
@@ -74,12 +88,12 @@ const MatchesTable = () => {
 
 
     return (
-        
-        
+
+
         <div className={`matches-table-container ${showTable ? '' : 'hide'}`}>
             <div className="tab" onClick={() => setShowTable(!showTable)}>
-            {showTable ? 'Hide' : 'Show'} All Fixtures
-        </div>
+                {showTable ? 'Hide' : 'Show'} All Fixtures
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -89,25 +103,34 @@ const MatchesTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {allMatches && allMatches.map((match, index) => (
-                        <tr key={index}>
+                    {allMatches && allMatches.map((match, index) => {
+                        let style = {};
+                        if (index === nextGameIndex) {
+                            style = {background: "#ffd230" , color:"black" };
+                        } else if (index === currentGameIndex) {
+                            style = { background: "#2866f6" , color:"white" };
+                        }
 
-                            <td>
-                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[match.team]}.png`} className="flag-icon" />
-                                {match.team}
-                            </td>
-                            <td>
-                                <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[match.opponent]}.png`} className="flag-icon" />
-                                {match.opponent}
-                            </td>
-                            
-                            <td>{new Date(match.dataTime).toLocaleString()}</td>
-                        </tr>
-                    ))}
+                        return (
+                            <tr key={index} >
+
+                                <td>
+                                    <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[match.team]}.png`} className="flag-icon" />
+                                    {match.team}
+                                </td>
+                                <td>
+                                    <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[match.opponent]}.png`} className="flag-icon" />
+                                    {match.opponent}
+                                </td>
+
+                                <td style={style}>{new Date(match.dataTime).toLocaleString()}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
         </div>
-       
+
     );
 }
 export default MatchesTable;

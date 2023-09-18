@@ -70,24 +70,41 @@
 }
 
 
+
+
 /* Style the table header and team name column */
 .tg-0pkt,
-.tg-0lax {
+.tg-0lax,
+.tg-0lat1,
+.tg-0lat2,
+.tg-0lat3
+{
   
   font-weight: bold;
   width: 55px;
 }
 
+.tg-0lat1{
+  background-color: rgb(193, 225, 193);
+}
+
+.tg-0lat3{
+  background-color: rgb(250, 160, 160);
+}
+
+.tg-0lat8{
+  background-color: rgb(42, 115, 224);
+  color: white
+}
 
 
 /* Style the odd rows with a light background color */
-.tg tbody tr:nth-child(odd) {
-  background-color: #f9f9f9;
+.tg-fixtures tbody tr {
+  background-color: #f5f5f5;
 }
 
-.tg tbody tr:nth-child(even) {
-  background-color: white;
-}
+
+
 
 /* Style the table header cells on smaller screens */
 @media screen and (max-width: 500px) {

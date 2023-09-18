@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import SportsModal from './SportsModal'
 import {FcExpand} from 'react-icons/fc'
 
-const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamFixtures }) => {
+const TeamRow = ({ team, tableIndex, rowIndex, isSelected, onTeamClick, teamSummaryData, selectedTeamFixtures }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
     const teamToCountryCode = {
         'New Zealand': 'nz',
@@ -25,6 +27,22 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
         'Samoa': 'ws',
         'Chile': 'cl',
     };
+
+    const pastelColors = [
+      '#4363d8', '#aaffc3',    // sky blue
+      '#f58231', '#911eb4',    // soft pink
+      '#E0F9B5', '#D8BFD8',    // thistle
+      '#A0CBE8', '#FFDAB9'     // peach puff
+  ];
+
+    let rowStyle = {};
+
+    if (rowIndex === 0) {
+        rowStyle = { backgroundColor: pastelColors[tableIndex * 2] };  // use table index to determine the color
+    } else if (rowIndex === 1) {
+        rowStyle = { backgroundColor: pastelColors[tableIndex * 2 + 1] };
+    }
+
 
     const getOrdinalSuffix = (day) => {
         if (day === 1 || day === 21 || day === 31) {
@@ -57,10 +75,18 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
         return `${hours}:${minutes}`;
     };
 
+    
+
+    const handleDateClick = (fixtureData) => {
+      
+      setIsModalOpen(true);
+  };
+
+
     return (
         <React.Fragment>
           <tr onClick={() => onTeamClick(team)}>
-            <td className={`tg-0la1 ${isSelected ? 'selected' : ''}`}>
+            <td style={rowStyle} className={`tg-0la1 ${isSelected ? 'selected' : ''}`}>
               <div>
               <img
                 src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[team]}.png`}
@@ -73,14 +99,15 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
             </td>
             {teamSummaryData ? (
               <>
-                <td className="tg-0lax">{teamSummaryData.win}</td>
+                <td className="tg-0lax">{teamSummaryData.played}</td>
+                <td className="tg-0lat1">{teamSummaryData.win}</td>
                 <td className="tg-0lax">{teamSummaryData.draw}</td>
-                <td className="tg-0lax">{teamSummaryData.loss}</td>
+                <td className="tg-0lat3">{teamSummaryData.loss}</td>
                 <td className="tg-0lax">{teamSummaryData.for}</td>
                 <td className="tg-0lax">{teamSummaryData.against}</td>
                 <td className="tg-0lax">{teamSummaryData.ptsDiff}</td>
                 <td className="tg-0lax">{teamSummaryData.bonus}</td>
-                <td className="tg-0lax">{teamSummaryData.pts}</td>
+                <td className="tg-0lat8">{teamSummaryData.pts}</td>
               </>
             ) : (
               <>
@@ -108,17 +135,17 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
                   <tbody>
                     {selectedTeamFixtures.map((fixture, idx) => (
                       <tr key={idx}>
-                        <td className="tg-0la1">{formatDate(fixture.dataTime)}</td>
+                        <td className="tg-0la1" onClick={() => handleDateClick(fixture)}>{formatDate(fixture.dataTime)}</td>
                         <td className="tg-0lax">{getTimeFromDateStr(fixture.dataTime)}</td>
                         <td className="tg-0la3">
                           <img src={`https://flagpedia.net/data/flags/normal/${teamToCountryCode[fixture.opponent]}.png`} className="flag-icon" />
                           {fixture.opponent}
                         </td>
-                        <td className="tg-0lax">{fixture.F}</td>
-                        <td className="tg-0lax">{fixture.A}</td>
+                        <td className="tg-0lax">{fixture.F === "" ? "0" : fixture.F}</td>
+                        <td className="tg-0lax">{fixture.A === "" ? "0" : fixture.A}</td>
                         <td className="tg-0lax">{(fixture.F) - (fixture.A)}</td>
                         <td className="tg-0lax">{fixture.bonus}</td>
-                        <td className="tg-0lax">{fixture.F > fixture.A ? 'Win' : fixture.F < fixture.A ? 'Loss' : 'Draw'}</td>
+                        <td className="tg-0lax">{fixture.F === "" && fixture.A === "" ? "NP" : fixture.F > fixture.A ? 'Win' : fixture.F < fixture.A ? 'Loss' : 'Draw'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -126,6 +153,7 @@ const TeamRow = ({ team, isSelected, onTeamClick, teamSummaryData, selectedTeamF
               </td>
             </tr>
           )}
+          <SportsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </React.Fragment>
       );
     };
