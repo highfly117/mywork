@@ -27,6 +27,14 @@
 
 }
 
+.dataRow{
+    height: 65px;
+}
+
+.graphRow{
+    height: calc(100% - 65px);
+}
+
 .sideNav.active~.WeatherApp .Panels {
     width: calc(100% - 205px);
     left: 217px

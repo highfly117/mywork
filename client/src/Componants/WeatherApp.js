@@ -54,7 +54,7 @@ function WeatherApp() {
       {data ? (
         <TopBar data={{ locationName: data.location.name, locationCountry: data.location.country, updateData: setdata, updateLocation: setLocation }} className="home_content"></TopBar>
       ) : (
-        <p>Loading...</p>
+       ""
       )}
       <div className="row Panels">
 
@@ -68,60 +68,60 @@ function WeatherApp() {
         </div>
 
         <div className="row row-4 bottomRow"  >
-          <div className="row row-2 dataRow" >
+          <div className="row dataRow" >
         {data ? (
             <DataBar data={{ DataType: "Temperature", DataValue: data.forecast.forecastday[0].hour[isHour].temp_c + " °C", TypeColor: "orange" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
         {data ? (
             <DataBar data={{ DataType: "Feels like", DataValue: data.forecast.forecastday[0].hour[isHour].feelslike_c + " °C", TypeColor: "orange" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Max", DataValue: data.forecast.forecastday[0].day.maxtemp_c + "°C", TypeColor: "orange" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Min", DataValue: data.forecast.forecastday[0].day.mintemp_c + "°C", TypeColor: "lightskyblue" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Humidity", DataValue: data.current.humidity + "%", TypeColor: "brown" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Wind Speed", DataValue: data.current.wind_mph + " mph", TypeColor: "Green" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Wind Direction", DataValue: data.current.wind_dir, TypeColor: "greenyellow" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Gusts", DataValue: data.current.gust_mph + " mph", TypeColor: "lightblue" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Pressure", DataValue: data.current.pressure_mb, TypeColor: "blueviolet" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           {data ? (
             <DataBar data={{ DataType: "Rain", DataValue: data.forecast.forecastday[0].day.totalprecip_mm + " mm", TypeColor: "royalblue" }} className="col-sm"></DataBar>
           ) : (
-            <p>Loading...</p>
+            ""
           )}
           </div>
 
-          <div className="row row-10 graphRow">
+          <div className="row graphRow">
         {data ? (
           <Graph data={data} className="D3Graphs"></Graph>
         ) : (

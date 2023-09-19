@@ -19,7 +19,7 @@ const DataBar = (data) => {
 
         <div  className="col-sm DataBar">
             <h2 >{data.data.DataType}</h2>
-            <div  className="weather_data_value">{data.data.DataValue}</div><p></p>
+            <div  className="weather_data_value">{data.data.DataValue}</div>
         </div>
     )
 

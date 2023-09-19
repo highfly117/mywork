@@ -219,7 +219,7 @@ const Graph = ({ data }) => {
 
     return (
         <div className="Graph">
-            <svg ref={svgRef} width="100%" height="100%" ></svg>
+            <svg ref={svgRef} width="100%" height="90%" ></svg>
         </div>
     );
 }
