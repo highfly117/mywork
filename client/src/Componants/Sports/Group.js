@@ -19,8 +19,10 @@ const calculateTeamSummary = (fixtures) => {
     pts: 0
   };
 
+  console.log(fixtures)
 
   fixtures.forEach(fixture => {
+    
 
     if (fixture.F !== "" && fixture.A !== "") {
       summary.played++
@@ -39,7 +41,7 @@ const calculateTeamSummary = (fixtures) => {
         summary.draw++;
         summary.pts += 2;
       }
-      summary.pts += summary.bonus
+      summary.pts += fixture.bonus
 
     }
 
