@@ -62,7 +62,7 @@ const QuarterFinals = () => {
         const newPoints = prompt(`Edit points for ${teamKey}`, currentPoints);
         if (newPoints) {
             const updatedMatchData = { ...quarterFinalsData[matchKey], [teamKey]: newPoints };
-            const updatedData = { updateLocation: 'quarter ', [matchKey]: updatedMatchData };
+            const updatedData = { updateLocation: 'quarter', [matchKey]: updatedMatchData };
             setQuarterData(prevData => ({ ...prevData, [matchKey]: updatedMatchData }));
 
             // Send updated data to the server
@@ -146,7 +146,7 @@ const QuarterFinals = () => {
                                     <th className="tg-0pkt">Date</th>
                                     <th className="tg-0pkt">KO</th>
                                     <th className="tg-0pkt">{winnerName}
-                                        <button className='editbutton' onClick={() => editPoints(key, 'winner', winner)}><FiEdit2 /></button>
+                                        <button className='editbutton' onClick={() => editPoints(key, winnerName, winner)}><FiEdit2 /></button>
                                     </th>
                                     <th className="tg-0pkt">
                                         <button className='editbutton' onClick={() => editPoints(key, 'pts1', value.pts1)}><FiEdit2 /></button>
@@ -155,7 +155,7 @@ const QuarterFinals = () => {
                                         <button className='editbutton' onClick={() => editPoints(key, 'pts2', value.pts2)}><FiEdit2 /></button>
                                     </th>
                                     <th className="tg-0lax">{runnerName}
-                                        <button className='editbutton' onClick={() => editPoints(key, 'runner', runner)}><FiEdit2 /></button></th>
+                                        <button className='editbutton' onClick={() => editPoints(key, runnerName, runner)}><FiEdit2 /></button></th>
                                 </tr>
                             </thead>
                             <tbody>

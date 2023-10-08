@@ -19,7 +19,7 @@ const calculateTeamSummary = (fixtures) => {
     pts: 0
   };
 
-  console.log(fixtures)
+
 
   fixtures.forEach(fixture => {
     
@@ -173,12 +173,12 @@ const Group = () => {
                 const summaryB = teamSummaryData[teamB] || { pts: 0, ptsDiff: 0 };
 
                 // Log teams that have missing data
-                if (!teamSummaryData[teamA]) {
-                  console.warn(`Missing data for team: ${teamA}`);
-                }
-                if (!teamSummaryData[teamB]) {
-                  console.warn(`Missing data for team: ${teamB}`);
-                }
+                // if (!teamSummaryData[teamA]) {
+                //   console.warn(`Missing data for team: ${teamA}`);
+                // }
+                // if (!teamSummaryData[teamB]) {
+                //   console.warn(`Missing data for team: ${teamB}`);
+                // }
 
                 if (summaryA.pts === summaryB.pts) {
                   return summaryB.ptsDiff - summaryA.ptsDiff;
